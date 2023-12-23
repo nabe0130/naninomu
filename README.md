@@ -1,30 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-```
-
 ■サービス概要
 自分の好み、その時飲んでみたいお酒を選ぶ参考にしてくれるアプリケーション
 
@@ -49,8 +22,15 @@ XなどのSNSやGoogleなどの検索機能
 MVPリリース
 トップページ
 新規登録機能
+<<<<<<< HEAD
 ログイン/ログアウト機能
 お気に入り機能
+=======
+質問開始画面
+ログイン/ログアウト機能
+お気に入り機能
+googleログイン機能
+>>>>>>> 0c02ac8d7963ccd40c155a02daf832c33b59ec45
 
 本リリース
 マルチ検索・オートコンプリート
@@ -60,5 +40,8 @@ MVPリリース
 ■ 機能の実装方針予定
 カクテル、ウイスキーのAPIを使用しようと思ってます。
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0c02ac8d7963ccd40c155a02daf832c33b59ec45
 ```
