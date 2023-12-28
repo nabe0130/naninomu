@@ -7,6 +7,9 @@ class Drink
   def self.fetch_cocktails
     uri = URI(BASE_URL)
     response = Net::HTTP.get(uri)
-    JSON.parse(response)
+    parsed_response = JSON.parse(response)
+
+    # APIからのレスポンスからカクテルのリストを抽出
+    parsed_response["cocktails"]
   end
 end

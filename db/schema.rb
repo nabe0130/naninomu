@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_26_220501) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_27_205628) do
   create_table "drinks", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -20,6 +20,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_220501) do
   create_table "games", force: :cascade do |t|
     t.string "status"
     t.string "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "progresses", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "sequence"
+    t.integer "question_id"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "content"
+    t.string "algorithm"
+    t.string "eval_value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
