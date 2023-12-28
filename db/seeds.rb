@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require_relative '../app/models/drink'
+
+data = Drink.fetch_cocktails
+data.each do |cocktail_data|
+  Cocktail.create!(
+    name: cocktail_data["cocktail_name"],
+    alcohol: cocktail_data["alcohol"],
+    description: cocktail_data["cocktail_desc"]
+    # その他のフィールドもここで設定
+  )
+end
