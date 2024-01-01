@@ -6,6 +6,8 @@ import 'bootstrap';
 // Custom stylesheets
 import '../stylesheets/application';
 
+import './alcohol_range.';
+
 // Rails dependencies
 require("@rails/ujs").start();
 require("turbolinks").start();

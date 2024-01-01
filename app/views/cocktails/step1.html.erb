@@ -1,0 +1,21 @@
+<%= form_with(url: step2_cocktails_path, method: "get") do %>
+  <!-- アルコール度数 -->
+  <div>
+    <label>アルコール度数</label>
+    <select name="alcohol_from" id="alcohol_from">
+      <option value="0">3％前後</option>
+      <option value="5">10％前後</option>
+      <option value="15">20％前後</option>
+      <option value="25">30％以上</option>
+    </select>
+  </div>
+
+  <!-- アルコール度数To（隠しフィールド） -->
+  <input type="hidden" name="alcohol_to" id="alcohol_to" value="100">
+
+  <div>
+    <button type="submit">次へ</button>
+  </div>
+<% end %>
+
+<%= javascript_pack_tag 'application' %>
