@@ -1,0 +1,24 @@
+<%= form_with(url: step3_cocktails_path, method: "get") do %>
+<!-- step1 からのデータを表示または隠しフィールドとして設定 -->
+  <input type="hidden" name="alcohol_from" value="<%= @alcohol_from %>">
+  <div>
+    <label>ベース</label>
+    <select name="base">
+      <option value="1">ジン</option>
+      <option value="2">ウォッカ</option>
+      <option value="3">テキーラ</option>
+      <option value="4">ラム</option>
+      <option value="5">ウイスキー</option>
+      <option value="6">ブランデー</option>
+      <option value="7">リキュール</option>
+      <option value="8">ワイン</option>
+      <option value="9">ビール</option>
+      <option value="10">日本酒</option>
+      <option value="0">ノンアルコール</option>
+    </select>
+  </div>
+
+  <div>
+    <button type="submit">次へ</button>
+  </div>
+<% end %>
