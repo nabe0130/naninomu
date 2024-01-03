@@ -1,0 +1,12 @@
+<h1>カクテルの結果</h1>
+
+<% if @cocktails.any? %>
+  <ul>
+    <% @cocktails.each do |cocktail| %>
+      <li><%= cocktail["cocktail_name"] %> - <%= cocktail["description"] %></li>
+      <!-- その他のカクテルの情報を表示 -->
+    <% end %>
+  </ul>
+<% else %>
+  <p>該当するカクテルが見つかりませんでした。</p>
+<% end %>
