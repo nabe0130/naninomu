@@ -1,24 +1,49 @@
-<%= form_with(url: step3_cocktails_path, method: "get") do %>
-<!-- step1 からのデータを表示または隠しフィールドとして設定 -->
+<%= form_with(url: step3_cocktails_path, method: "get", class: "form-group") do %>
+  <!-- step1 からのデータを隠しフィールドとして設定 -->
   <input type="hidden" name="alcohol_from" value="<%= @alcohol_from %>">
-  <div>
-    <label>ベース</label>
-    <select name="base">
-      <option value="1">ジン</option>
-      <option value="2">ウォッカ</option>
-      <option value="3">テキーラ</option>
-      <option value="4">ラム</option>
-      <option value="5">ウイスキー</option>
-      <option value="6">ブランデー</option>
-      <option value="7">リキュール</option>
-      <option value="8">ワイン</option>
-      <option value="9">ビール</option>
-      <option value="10">日本酒</option>
-      <option value="0">ノンアルコール</option>
-    </select>
-  </div>
 
-  <div>
-    <button type="submit">次へ</button>
+  <fieldset class="mb-3">
+    <legend class="form-label">ベースの選択</legend>
+    
+    <div class="row">
+      <!-- 1列目 -->
+      <div class="col-md-4">
+      <label class="btn btn-outline-primary d-block mb-2">
+        <input type="radio" name="base" value="1" id="base1"> ジン
+      </label>
+      <label class="btn btn-outline-primary d-block mb-2">
+        <input type="radio" name="base" value="2" id="base2"> ウォッカ
+      </label>
+      <label class="btn btn-outline-primary d-block">
+        <input type="radio" name="base" value="3" id="base3"> テキーラ
+      </label>
+    </div>
+      <!-- 2列目 -->
+      <div class="col-md-4">
+      <label class="btn btn-outline-primary d-block mb-2">
+        <input type="radio" name="base" value="4" id="base4"> ラム
+      </label>
+      <label class="btn btn-outline-primary d-block mb-2">
+        <input type="radio" name="base" value="5" id="base5"> ウイスキー
+      </label>
+      <label class="btn btn-outline-primary d-block">
+        <input type="radio" name="base" value="6" id="base6"> ブランデー
+      </label>
+    </div>
+      <!-- 3列目 -->
+      <div class="col-md-4">
+      <label class="btn btn-outline-primary d-block mb-2">
+        <input type="radio" name="base" value="7" id="base7"> リキュール
+      </label>
+      <label class="btn btn-outline-primary d-block mb-2">
+        <input type="radio" name="base" value="9" id="base9"> ビール
+      </label>
+      <label class="btn btn-outline-primary d-block">
+        <input type="radio" name="base" value="0" id="base0"> ノンアルコール
+      </label>
+    </div>
   </div>
+</fieldset>
+
+  <button type="submit" class="btn btn-primary mt-2">次へ</button>
 <% end %>

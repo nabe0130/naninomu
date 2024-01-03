@@ -1,21 +1,35 @@
-<%= form_with(url: step2_cocktails_path, method: "get") do %>
-  <!-- アルコール度数 -->
-  <div>
-    <label>アルコール度数</label>
-    <select name="alcohol_from" id="alcohol_from">
-      <option value="0">3％前後</option>
-      <option value="5">10％前後</option>
-      <option value="15">20％前後</option>
-      <option value="25">30％以上</option>
-    </select>
-  </div>
+<%= form_with(url: step2_cocktails_path, method: "get", class: "form-group") do %>
+  <fieldset class="mb-3">
+    <legend class="form-label">アルコール度数</legend>
+    
+    <div class="btn-group-vertical" role="group" aria-label="Alcohol content">
+      <label class="btn btn-outline-primary">
+        <input type="radio" name="alcohol_from" value="0" id="option1"> 3％前後
+      </label>
+      <label class="btn btn-outline-primary">
+        <input type="radio" name="alcohol_from" value="5" id="option2"> 10％前後
+      </label>
+      <label class="btn btn-outline-primary">
+        <input type="radio" name="alcohol_from" value="15" id="option3"> 20％前後
+      </label>
+      <label class="btn btn-outline-primary">
+        <input type="radio" name="alcohol_from" value="25" id="option4"> 30％以上
+      </label>
+    </div>
+  </fieldset>
 
-  <!-- アルコール度数To（隠しフィールド） -->
-  <input type="hidden" name="alcohol_to" id="alcohol_to" value="100">
+  <input type="hidden" name="alcohol_to" value="100">
 
-  <div>
-    <button type="submit">次へ</button>
-  </div>
+  <button type="submit" class="btn btn-primary mt-2">次へ</button>
 <% end %>
 
-<%= javascript_pack_tag 'application' %>
+<!--
+form-group: Bootstrapのフォームグループクラスで、フォーム要素をまとめるために使用します。
+mb-3: マージンボトムを適用して、要素間の間隔を作ります。
+form-label: ラベルにスタイルを適用します。
+form-select: セレクトボックスにBootstrapスタイルを適用します。
+btn btn-primary: ボタンにプライマリスタイル（青色）を適用します。 
+各ラジオボタンを label タグで囲んでいます。これにより、ラベル全体が選択可能な領域となります。
+btn-group-vertical クラスを使用して、ボタンを垂直に並べます。
+btn と btn-outline-primary クラスを使用して、各ラベルにボタンのような外観を与えます。
+-->

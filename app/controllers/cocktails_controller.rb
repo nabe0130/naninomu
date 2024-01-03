@@ -9,28 +9,36 @@ class CocktailsController < ApplicationController
 
   def step2
     #　ステップ1からの選択をビューに渡す
-    @alcohol_content = params[:alcohol_from]
+    @alcohol_from = params[:alcohol_from]
   end
 
   def step3
     #　ステップ1と2からの選択をビューに渡す
-    @alcohol_content = params[:alcohol_content]
+    @alcohol_from = params[:alcohol_from]
     @base = params[:base]
   end
 
-  def index
-    if params[:alcohol_from]
-      uri = URI("https://cocktail-f.com/api/v1/cocktails")
-      uri.query = URI.encode_www_form({
-        alcohol_from: params[:alcohol_from],
-        alcohol_to: params[:alcohol_to],
-        base: params[:base],
-        taste: params[:taste],
-        # 他のパラメータもここに追加
-      })
+  def result
+    alcohol_from = params[:alcohol_from]
+    alcohol_to = params[:alcohol_to]
+    base = params[:base]
+    tastes = params[:taste] # これは配列です
 
-      response = Net::HTTP.get(uri)
-      @cocktails = JSON.parse(response)["cocktails"]
-    end
+    # APIリクエストのURIを構築
+    uri = URI("https://cocktail-f.com/api/v1/cocktails")
+    uri.query = URI.encode_www_form({
+      alcohol_from: alcohol_from,
+      alcohol_to: alcohol_to,
+      base: base,
+      taste: tastes.join(",")
+      # 複数の味わいを扱う場合は、これを適切に処理する必要があります
+      # 例: taste: tastes.join(",")
+    })
+
+    # APIリクエストを送信
+    response = Net::HTTP.get(uri)
+    @cocktails = JSON.parse(response)["cocktails"]
+
+    # その他の処理
   end
 end

@@ -1,15 +1,31 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* チェックボックスを非表示にする */
+.hidden-checkbox {
+    display: none;
+  }
+
+/* チェックボックスが選択されているときのラベルスタイル */
+.custom-radio-label.checked {
+  background-color: #007bff;
+  color: white;
+}
+
+
+  /* ラジオボタン風のラベルスタイル */
+  .custom-radio-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #007bff;
+    border-radius: 0.25rem;
+    text-align: center;
+    color: #007bff;
+    background-color: #fff;
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  }
+  
+  .custom-radio-label:hover {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  

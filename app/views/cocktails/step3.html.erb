@@ -1,20 +1,32 @@
-<%= form_with(url: results_cocktails_path, method: "get") do %>
-  <div>
-    <label>味わい</label>
-    <select name="taste[]" multiple> <!--name="taste[]" という配列形式は複数選択できる様になる -->
-      <option value="1">甘口</option>
-      <option value="2">中甘口</option>
-      <option value="3">中口</option>
-      <option value="4">中辛口</option>
-      <option value="5">辛口</option>
-    </select>
-  </div>
+<%= form_with(url: results_cocktails_path, method: "get", class: "form-group") do %>
+  <fieldset class="mb-3">
+    <legend class="form-label">味わいの選択</legend>
 
-  <!-- 以前のステップの選択を隠しフィールドとして含める -->
+    <% [["1", "甘口"], ["2", "中甘口"], ["3", "中口"], ["4", "中辛口"], ["5", "辛口"]].each do |value, label| %>
+      <div class="form-check mb-2">
+        <input class="hidden-checkbox" type="checkbox" name="taste[]" value="<%= value %>" id="taste<%= value %>">
+        <label class="custom-radio-label" for="taste<%= value %>"><%= label %></label>
+      </div>
+    <% end %>
+  </fieldset>
+
   <input type="hidden" name="alcohol_content" value="<%= @alcohol_content %>">
   <input type="hidden" name="base" value="<%= @base %>">
 
-  <div>
-    <button type="submit">結果を表示</button>
-  </div>
+  <button type="submit" class="btn btn-primary mt-2">結果を表示</button>
 <% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.hidden-checkbox').forEach(function(checkbox) {
+      checkbox.addEventListener('change', function() {
+        var label = this.nextElementSibling;
+        if(this.checked) {
+          label.classList.add('checked');
+        } else {
+          label.classList.remove('checked');
+        }
+      });
+    });
+  });
+</script>
