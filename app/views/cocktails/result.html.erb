@@ -1,0 +1,13 @@
+<h2>カクテルの結果</h2>
+
+<% if @cocktails.any? %>
+  <ul>
+    <% @cocktails.each do |cocktail| %>
+      <li><%= cocktail["cocktail_name"] %> - <%= cocktail["description"] %></li>
+      <!-- その他のカクテルの情報を表示 -->
+    <% end %>
+  </ul>
+<% else %>
+  <p>その条件に当てはまるカクテルがありませんでした。</p>
+  条件を緩和して再度検索してみて下さい！
+<% end %>
