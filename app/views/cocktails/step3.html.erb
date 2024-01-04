@@ -1,6 +1,7 @@
 <%= form_with(url: results_cocktails_path, method: "get", class: "form-group") do %>
   <fieldset class="mb-3">
     <legend class="form-label">味わいの選択</legend>
+　　※この選択は複数選ぶことができます！
 
     <% [["1", "甘口"], ["2", "中甘口"], ["3", "中口"], ["4", "中辛口"], ["5", "辛口"]].each do |value, label| %>
       <div class="form-check mb-2">

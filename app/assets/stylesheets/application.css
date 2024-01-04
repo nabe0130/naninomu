@@ -9,6 +9,11 @@
   color: white;
 }
 
+/* ラジオボタンを視覚的に隠すが、アクセシビリティツールからはアクセス可能に保つ */
+.hidden-radio {
+    position: absolute;
+    left: -9999px;
+  }
 
   /* ラジオボタン風のラベルスタイル */
   .custom-radio-label {

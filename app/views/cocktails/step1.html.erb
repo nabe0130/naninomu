@@ -1,27 +1,33 @@
 <%= form_with(url: step2_cocktails_path, method: "get", class: "form-group") do %>
   <fieldset class="mb-3">
     <legend class="form-label">アルコール度数</legend>
-    
     <div class="btn-group-vertical" role="group" aria-label="Alcohol content">
-      <label class="btn btn-outline-primary">
-        <input type="radio" name="alcohol_from" value="0" id="option1"> 3％前後
-      </label>
-      <label class="btn btn-outline-primary">
-        <input type="radio" name="alcohol_from" value="5" id="option2"> 10％前後
-      </label>
-      <label class="btn btn-outline-primary">
-        <input type="radio" name="alcohol_from" value="15" id="option3"> 20％前後
-      </label>
-      <label class="btn btn-outline-primary">
-        <input type="radio" name="alcohol_from" value="25" id="option4"> 30％以上
-      </label>
+      <% [['0', 'ノンアルコール'], ['1-8', '5％前後'], ['9-15', '10％前後'], ['16-25', '20%前後'], ['26-50', '30%以上']].each do |value, label| %>
+        <label class="btn btn-outline-primary">
+          <input type="radio" name="alcohol_from" value="<%= value %>" class="hidden-radio"> <%= label %>
+        </label>
+      <% end %>
     </div>
   </fieldset>
-
   <input type="hidden" name="alcohol_to" value="100">
-
   <button type="submit" class="btn btn-primary mt-2">次へ</button>
 <% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.hidden-radio').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        document.querySelectorAll('.btn-group-vertical .btn').forEach(function(label) {
+          label.classList.remove('active');
+        });
+        if(this.checked) {
+          this.parentElement.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
 
 <!--
 form-group: Bootstrapのフォームグループクラスで、フォーム要素をまとめるために使用します。

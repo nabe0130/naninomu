@@ -26,19 +26,32 @@ class CocktailsController < ApplicationController
 
     # APIリクエストのURIを構築
     uri = URI("https://cocktail-f.com/api/v1/cocktails")
-    uri.query = URI.encode_www_form({
+    query_params = {
       alcohol_from: alcohol_from,
       alcohol_to: alcohol_to,
-      base: base,
-      taste: tastes.join(",")
-      # 複数の味わいを扱う場合は、これを適切に処理する必要があります
-      # 例: taste: tastes.join(",")
-    })
+      base: base
+}
+tastes.each { |taste| query_params[:taste] = taste }
+uri.query = URI.encode_www_form(query_params)
+#カンマ区切りのリストとして送信するtaste: tastes.join(",")としてたが、APIが対応していなかった為複数回パラメーターを繰り返すコードへ
 
-    # APIリクエストを送信
-    response = Net::HTTP.get(uri)
-    @cocktails = JSON.parse(response)["cocktails"]
 
-    # その他の処理
+    begin
+      # APIリクエストを送信し、レスポンスを処理
+      response = Net::HTTP.get(uri)
+      parsed_response = JSON.parse(response)
+  
+      # レスポンスの内容を確認し、@cocktailsに代入
+      if parsed_response["cocktails"].is_a?(Array)
+        @cocktails = parsed_response["cocktails"]
+      else
+        @cocktails = []
+      end
+    rescue JSON::ParserError, Net::HTTPError => e
+      # エラーハンドリング: パースエラーやHTTPエラーが発生した場合
+      Rails.logger.error "API request failed: #{e.message}" #エラーメッセージをログに記録
+      @cocktails = []
+      # ここでエラーログを記録するなどの処理を行う
+    end
   end
 end
