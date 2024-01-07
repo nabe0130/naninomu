@@ -2,7 +2,7 @@
   <fieldset class="mb-3">
     <legend class="form-label">アルコール度数</legend>
     <div class="btn-group-vertical" role="group" aria-label="Alcohol content">
-      <% [['0', 'ノンアルコール'], ['1-8', '5％前後'], ['9-15', '10％前後'], ['16-25', '20%前後'], ['26-50', '30%以上']].each do |value, label| %>
+      <% [['0', 'ノンアルコール'], ['1', '5％前後'], ['8', '10％前後'], ['14', '20%前後'], ['25', '30%以上']].each do |value, label| %>
         <label class="btn btn-outline-primary">
           <input type="radio" name="alcohol_from" value="<%= value %>" class="hidden-radio"> <%= label %>
         </label>
