@@ -1,18 +1,18 @@
-<h2>カクテルの結果</h2>
+<h2>貴方におすすめのカクテル</h2>
 
-<% if @detailed_cocktails.any? %>
-  <ul>
-    <% @detailed_cocktails.each do |cocktail_detail| %>
-      <% cocktail = cocktail_detail["cocktail"] %>
-      <li>
-        <strong><%= cocktail["cocktail_name"] %></strong>
-        <p><%= cocktail["cocktail_desc"] %></p>
-        <p>アルコール度数: <%= cocktail["alcohol"] %></p>
-        <!-- その他の詳細情報を表示 -->
-      </li>
+<div class="cocktails-container">
+  <% if @detailed_cocktails.any? %>
+    <% @detailed_cocktails.each do |cocktail| %>
+      <div class="cocktail-card">
+        <div class="cocktail-info">
+          <h3><%= cocktail["cocktail"]["cocktail_name"] %></h3>
+          <p><%= cocktail["cocktail"]["cocktail_desc"] %></p>
+          <p class="alcohol-content">アルコール度数: <%= cocktail["cocktail"]["alcohol"] %>％</p>
+          <!-- その他の詳細情報を表示 -->
+        </div>
+      </div>
     <% end %>
-  </ul>
-<% else %>
-  <p>その条件に当てはまるカクテルがありませんでした。</p>
-  他の条件で再度検索してみて下さい！
-<% end %>
+  <% else %>
+    <p>その条件に当てはまるカクテルがありませんでした。</p>
+    他の条件で再度検索してみて下さい！
+  <% end %>
