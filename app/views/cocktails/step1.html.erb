@@ -1,0 +1,41 @@
+<%= form_with(url: step2_cocktails_path, method: "get", class: "form-group") do %>
+  <fieldset class="mb-3">
+    <legend class="form-label">アルコール度数</legend>
+    <div class="btn-group-vertical" role="group" aria-label="Alcohol content">
+      <% [['0', 'ノンアルコール'], ['1', '5％前後'], ['8', '10％前後'], ['14', '20%前後'], ['25', '30%以上']].each do |value, label| %>
+        <label class="btn btn-outline-primary">
+          <input type="radio" name="alcohol_from" value="<%= value %>" class="hidden-radio"> <%= label %>
+        </label>
+      <% end %>
+    </div>
+  </fieldset>
+  <input type="hidden" name="alcohol_to" value="100">
+  <button type="submit" class="btn btn-primary mt-2">次へ</button>
+<% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.hidden-radio').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        document.querySelectorAll('.btn-group-vertical .btn').forEach(function(label) {
+          label.classList.remove('active');
+        });
+        if(this.checked) {
+          this.parentElement.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
+
+<!--
+form-group: Bootstrapのフォームグループクラスで、フォーム要素をまとめるために使用します。
+mb-3: マージンボトムを適用して、要素間の間隔を作ります。
+form-label: ラベルにスタイルを適用します。
+form-select: セレクトボックスにBootstrapスタイルを適用します。
+btn btn-primary: ボタンにプライマリスタイル（青色）を適用します。 
+各ラジオボタンを label タグで囲んでいます。これにより、ラベル全体が選択可能な領域となります。
+btn-group-vertical クラスを使用して、ボタンを垂直に並べます。
+btn と btn-outline-primary クラスを使用して、各ラベルにボタンのような外観を与えます。
+-->

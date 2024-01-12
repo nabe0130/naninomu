@@ -1,0 +1,50 @@
+<%= form_with(url: step3_cocktails_path, method: "get", class: "form-group") do %>
+  <!-- step1 からのデータを隠しフィールドとして設定 -->
+  <input type="hidden" name="alcohol_from" value="<%= @alcohol_from %>">
+
+  <fieldset class="mb-3">
+    <legend class="form-label">ベースの選択</legend>
+    <div class="row">
+      <% 
+      bases = [
+        ['1', 'ジン'], 
+        ['2', 'ウォッカ'], 
+        ['3', 'テキーラ'], 
+        ['4', 'ラム'], 
+        ['5', 'ウイスキー'], 
+        ['6', 'ブランデー'], 
+        ['7', 'リキュール'], 
+        ['9', 'ビール'], 
+        ['0', 'ノンアルコール']
+      ]
+      %>
+      <% bases.each_with_index do |(value, label), index| %>
+        <% if index % 3 == 0 %><div class="col-md-4"><% end %>
+          <label class="btn btn-outline-primary d-block mb-2">
+            <input type="radio" name="base" value="<%= value %>" id="base<%= value %>"class="hidden-radio"> <%= label %>
+          </label>
+        <% if (index + 1) % 3 == 0 || index == bases.length - 1 %></div><% end %>
+      <% end %>
+    </div>
+  </fieldset>
+
+  <button type="submit" class="btn btn-primary mt-2">次へ</button>
+<% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('[name="base"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      // すべてのラベルのアクティブスタイルをリセット
+      document.querySelectorAll('.row .btn').forEach(function(label) {
+        label.classList.remove('active');
+      });
+
+      // 選択されたラジオボタンのラベルにアクティブスタイルを適用
+      if(this.checked) {
+        this.parentElement.classList.add('active');
+      }
+    });
+  });
+});
+</script>
