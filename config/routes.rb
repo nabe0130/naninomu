@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'cocktails/step2', to: 'cocktails#step2', as: :step2_cocktails
   get 'cocktails/step3', to: 'cocktails#step3', as: :step3_cocktails
   get 'cocktails/result', to: 'cocktails#result', as: :results_cocktails
+  
+  # GamesControllerのnewアクションに対するルーティング
+  get '/games', to: 'games#new'
 
   # GamesControllerのルーティング
   resources :games, only: [:new, :create] do
