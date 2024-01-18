@@ -1,31 +1,32 @@
 <%= form_with(url: results_cocktails_path, method: "get", class: "form-group") do %>
   <fieldset class="mb-3">
     <legend class="form-label">味わいの選択</legend>
-    <% taste_groups = [
-      ['1,2', '甘口'],
-      ['3', '中口'],
-      ['4,5', '辛口']
-    ] %>
-    <% taste_groups.each do |value, label| %>
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="radio" name="taste_group" value="<%= value %>" id="taste<%= value %>">
-        <label class="custom-radio-label" for="taste<%= value %>"><%= label %></label>
-      </div>
-    <% end %>
+    <div class="btn-group-vertical" role="group" aria-label="Taste Group">
+      <% taste_groups = [['1,2', '甘口'], ['3', '中口'], ['4,5', '辛口']] %>
+      <% taste_groups.each do |value, label| %>
+        <label class="btn btn-outline-primary">
+          <input type="radio" name="taste_group" value="<%= value %>" id="taste<%= value %>" class="hidden-radio"> <%= label %>
+        </label>
+      <% end %>
+    </div>
   </fieldset>
 
-  <button type="submit" class="btn btn-primary mt-2">結果を表示</button>
+  <div class="d-flex justify-content-center">
+    <button type="submit" class="btn btn-primary mt-2">結果を表示</button>
+  </div>
 <% end %>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll('.hidden-checkbox').forEach(function(checkbox) {
-      checkbox.addEventListener('change', function() {
-        var label = this.nextElementSibling;
+    document.querySelectorAll('.hidden-radio').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        // すべてのラベルのアクティブスタイルをリセット
+        document.querySelectorAll('.btn-group-vertical .btn').forEach(function(label) {
+          label.classList.remove('active');
+        });
+        // 選択されたラジオボタンのラベルにアクティブスタイルを適用
         if(this.checked) {
-          label.classList.add('checked');
-        } else {
-          label.classList.remove('checked');
+          this.parentElement.classList.add('active');
         }
       });
     });
