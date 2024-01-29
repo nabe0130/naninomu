@@ -22,7 +22,7 @@ def result
   alcohol_from = session[:alcohol_from]
   base = session[:base]
   taste_group = params[:taste_group]
-  tastes = taste_group.split(',') # '1,2' を ['1', '2'] に分割
+  tastes = taste_group.present? ? taste_group.split(',') : []  # 'taste_group' が存在しない場合、空の配列を使用
 
   # アルコール度数の上限値の設定
   alcohol_to = case alcohol_from

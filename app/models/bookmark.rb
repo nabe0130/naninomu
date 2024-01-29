@@ -1,4 +1,6 @@
 class Bookmark < ApplicationRecord
-  belongs_to :user
-  belongs_to :cocktail # ここでカクテルモデルへの関連付けを行う
+  belongs_to :user #userモデルへの関連付け
+  belongs_to :drink #drinkモデルへの関連付け
+
+  validates :drink_id, uniqueness: { scope: :user_id }
 end

@@ -16,19 +16,29 @@
   </div>
 <% end %>
 
+<div id="loading" style="display: none;">
+  <p>おすすめのカクテル考え中.....</p>
+</div>
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
+    // ラジオボタンの変更時の処理
     document.querySelectorAll('.hidden-radio').forEach(function(radio) {
       radio.addEventListener('change', function() {
-        // すべてのラベルのアクティブスタイルをリセット
         document.querySelectorAll('.btn-group-vertical .btn').forEach(function(label) {
           label.classList.remove('active');
         });
-        // 選択されたラジオボタンのラベルにアクティブスタイルを適用
-        if(this.checked) {
+        if (this.checked) {
           this.parentElement.classList.add('active');
         }
       });
+    });
+
+    // フォーム送信時の処理
+    var form = document.querySelector('.form-group');
+    var loading = document.getElementById('loading');
+    form.addEventListener('submit', function() {
+      loading.style.display = 'block'; // ロード画面を表示
     });
   });
 </script>

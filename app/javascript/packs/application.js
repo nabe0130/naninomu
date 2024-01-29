@@ -1,24 +1,24 @@
-// app/javascript/packs/application.js
-
 // Bootstrap
 import 'bootstrap';
 
 // Custom stylesheets
 import '../stylesheets/application';
 
-import './alcohol_range.';
+// 指定されたファイル './alcohol_range' が存在するか確認してください。
+// 存在しない場合は、以下の行を削除してください。
+import './alcohol_range';
 
-// Rails dependencies
-require("@rails/ujs").start();
-require("turbolinks").start();
-require("@rails/activestorage").start();
-require("channels");
+import './bookmarks'
 
-// Uncomment to copy all static images under ../images to the output folder
-// and reference them with the image_pack_tag helper in views
-// (e.g <%= image_pack_tag 'rails.png' %>) or the `imagePath` JavaScript helper below.
-//
-// const images = require.context('../images', true);
-// const imagePath = (name) => images(name, true);
+import 'jquery'
 
-// Your custom JavaScript code goes here
+// RailsのJavaScript機能をインポート
+import Rails from '@rails/ujs';
+import Turbolinks from 'turbolinks';
+import * as ActiveStorage from '@rails/activestorage';
+// RailsのJavaScript機能を起動
+Rails.start();
+Turbolinks.start();
+ActiveStorage.start();
+
+// ここにカスタムJavaScriptコードを追加することができます。

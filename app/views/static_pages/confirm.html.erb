@@ -1,0 +1,28 @@
+<% provide(:title, 'お問い合わせ確認') %>
+
+<h1>お問い合わせ内容の確認</h1>
+
+<p>以下の内容でお問い合わせを送信します。内容をご確認ください。</p>
+
+<div>
+  <strong>お名前:</strong>
+  <%= @contact.name %>
+</div>
+
+<div>
+  <strong>メールアドレス:</strong>
+  <%= @contact.email %>
+</div>
+
+<div>
+  <strong>お問い合わせ内容:</strong>
+  <%= @contact.content %>
+</div>
+
+<%= form_with(url: contact_done_path, method: :post) do %>
+  <%= hidden_field_tag 'contact[name]', @contact.name %>
+  <%= hidden_field_tag 'contact[email]', @contact.email %>
+  <%= hidden_field_tag 'contact[content]', @contact.content %>
+  <%= submit_tag "送信する", class: 'btn btn-primary mr-2' %>
+  <%= link_to '戻る', contact_path, class: 'btn btn-outline-primary' %>
+<% end %>

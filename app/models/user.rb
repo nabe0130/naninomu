@@ -5,4 +5,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
+  def bookmarked?(cocktail)
+    bookmarks.exists?(drink_id: cocktail_id)
+  end
 end
