@@ -2,6 +2,27 @@ body  {
   background-color: #FAEBD7 !important;
 }
 
+#google-login-btn {
+  background-color: #4285F4; /* Googleのブルー */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 2px;
+  font-size: 16px;
+  text-align: center;
+  display: inline-block;
+  margin: 10px 0;
+}
+
+#google-login-btn i {
+  margin-right: 8px; /* アイコンとテキストの間隔 */
+}
+
+#google-login-btn:hover {
+  background-color: #357ae8; /* ホバー時の色 */
+}
+
+
 .bi-heart {
   color: grey; /* 未選択時の色 */
 }

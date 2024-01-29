@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   get 'static_pages/contact'
   get 'static_pages/terms'
   get 'static_pages/privacy'
-  devise_for :users
+
+  devise_for :users, controllers: {
+
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
   # GamesControllerのnewアクションをアプリケーションのメインページに設定
   root 'games#new'
 
