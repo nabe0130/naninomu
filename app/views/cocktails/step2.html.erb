@@ -1,4 +1,4 @@
-<%= form_with(url: step3_cocktails_path, method: "get", class: "form-group") do %>
+<%= form_with(url: step3_cocktails_path, method: "get", class: "form-group") do %>  <!-- フォームを開始。送信先はstep3_cocktails_pathで、メソッドはGET、classはform-group -->
   <!-- step1 からのデータを隠しフィールドとして設定 -->
   <input type="hidden" name="alcohol_from" value="<%= @alcohol_from %>">
 
@@ -18,7 +18,7 @@
         ['0', 'ノンアルコール']
       ]
       %>
-      <% bases.each_with_index do |(value, label), index| %>
+      <% bases.each_with_index do |(value, label), index| %>  <!-- bases配列の各要素に対してループを実行。要素はvalueとlabelのペア、indexは要素のインデックス -->
         <% if index % 3 == 0 %><div class="col-md-4"><% end %>
           <label class="btn btn-outline-primary d-block mb-2">
             <input type="radio" name="base" value="<%= value %>" id="base<%= value %>"class="hidden-radio"> <%= label %>

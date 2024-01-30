@@ -2,19 +2,19 @@
 5件以上ある場合はランダムに5件表示されます。
 
 <div class="cocktails-container">
-  <% if @detailed_cocktails.any? %>
-    <% @detailed_cocktails.each do |cocktail| %>
+  <% if @detailed_cocktails.any? %>  <!-- @detailed_cocktailsにデータがあるかどうかをチェック -->
+    <% @detailed_cocktails.each do |cocktail| %>  <!-- @detailed_cocktailsの各要素に対して繰り返し処理を実行 -->
       <div class="cocktail-card">
         <div class="d-flex align-items-center justify-content-between">
           <div>
           <h3><%= cocktail["cocktail"]["cocktail_name"] %></h3>
           <!--  <p>ID: <%= cocktail["cocktail"]["cocktail_id"] %></p>  ここでIDを表示 -->
-          <p><%= cocktail["cocktail"]["cocktail_desc"] %></p>
+          <p><%= cocktail["cocktail"]["cocktail_desc"] %></p>  <!-- カクテルの説明文の表示 -->
           <p class="alcohol-content">アルコール度数: <%= cocktail["cocktail"]["alcohol"] %>％</p>
           </div>
           <!-- お気に入りボタンを追加 -->
           <% cocktail_id = cocktail["cocktail"]["cocktail_id"] %>
-          <% if current_user.bookmarks.find_by(drink_id: cocktail_id).present? %>
+          <% if current_user.bookmarks.find_by(drink_id: cocktail_id).present? %>  <!-- 現在のユーザーがこのカクテルをお気に入りに追加しているかどうかをチェック -->
             <%= link_to drink_bookmarks_path(cocktail_id), method: :delete, remote: true, class: 'favorite-icon-link' do %>
               <i class="bi bi-heart-fill"></i> <!-- 既にブックマークされている場合のハートアイコン -->
             <% end %>
@@ -26,7 +26,7 @@
         </div>
       </div>
     <% end %>
-  <% else %>
+  <% else %>  <!-- @detailed_cocktailsにデータがない場合のメッセージ -->
     <p>その条件に当てはまるカクテルがありませんでした。</p>
     他の条件で再度検索してみて下さい！
   <% end %>
