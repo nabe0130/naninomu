@@ -1,0 +1,17 @@
+<h2>お気に入り一覧</h2>
+<div class="cocktail-card">
+  <div class="cocktail-info">
+    <% @user.bookmarks.each do |bookmark| %>
+        <div class="cocktail-info d-flex align-items-center justify-content-between">
+        <div>
+            <h5><%= bookmark.drink.name %></h5>
+            <p><%= bookmark.drink.description %></p>
+        </div>
+        <%= link_to drink_bookmarks_path(bookmark.drink), method: :delete, class: 'custom-icon-link' do %>
+            <i class="bi bi-heart-fill"></i>
+        <% end %>
+        </div>
+    <% end %>
+    </div>
+  </div>
+  

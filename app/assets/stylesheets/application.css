@@ -1,6 +1,62 @@
+body  {
+  background-color: #FAEBD7 !important;
+}
+
+#google-login-btn {
+  background-color: #4285F4; /* Googleのブルー */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 2px;
+  font-size: 16px;
+  text-align: center;
+  display: inline-block;
+  margin: 10px 0;
+}
+
+#google-login-btn i {
+  margin-right: 8px; /* アイコンとテキストの間隔 */
+}
+
+#google-login-btn:hover {
+  background-color: #357ae8; /* ホバー時の色 */
+}
+
+
+.bi-heart {
+  color: grey; /* 未選択時の色 */
+}
+
+.bi-heart-fill {
+  color: red; /* 選択時の色 */
+}
+
+.favorite-icon-link {
+  display: flex; /* フレックスボックスを使用 */
+  align-items: center; /* アイテムを垂直方向の中央に配置 */
+  justify-content: center; /* アイテムを水平方向の中央に配置 */
+}
+
+.custom-icon-link {
+  color: red; /* アイコンの色をピンクに設定 */
+  background-color: transparent;
+  border-radius: 50%;
+  text-decoration: none;
+  padding: 10px; /* アイコンの周りのスペース */
+}
+
+.custom-icon-link:hover {
+  color: pink; /* ホバー時のアイコンの色 */
+  background-color: transparent; /* ホバー時の背景色を変更しない */
+  text-decoration: none; /* ホバー時の下線を削除 */
+  padding: 10px; /* アイコンの周りのスペース */
+}
+
 .cocktails-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 20px;
   }
   

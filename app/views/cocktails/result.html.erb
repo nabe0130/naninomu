@@ -1,14 +1,28 @@
 <h2>貴方におすすめのカクテル</h2>
+5件以上ある場合はランダムに5件表示されます。
 
 <div class="cocktails-container">
   <% if @detailed_cocktails.any? %>
     <% @detailed_cocktails.each do |cocktail| %>
       <div class="cocktail-card">
-        <div class="cocktail-info">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
           <h3><%= cocktail["cocktail"]["cocktail_name"] %></h3>
+          <!--  <p>ID: <%= cocktail["cocktail"]["cocktail_id"] %></p>  ここでIDを表示 -->
           <p><%= cocktail["cocktail"]["cocktail_desc"] %></p>
           <p class="alcohol-content">アルコール度数: <%= cocktail["cocktail"]["alcohol"] %>％</p>
-          <!-- その他の詳細情報を表示 -->
+          </div>
+          <!-- お気に入りボタンを追加 -->
+          <% cocktail_id = cocktail["cocktail"]["cocktail_id"] %>
+          <% if current_user.bookmarks.find_by(drink_id: cocktail_id).present? %>
+            <%= link_to drink_bookmarks_path(cocktail_id), method: :delete, remote: true, class: 'favorite-icon-link' do %>
+              <i class="bi bi-heart-fill"></i> <!-- 既にブックマークされている場合のハートアイコン -->
+            <% end %>
+          <% else %>
+            <%= link_to drink_bookmarks_path(cocktail_id), method: :post, remote: true, class: 'favorite-icon-link' do %>
+              <i class="bi bi-heart"></i> <!-- ブックマークされていない場合のハートアイコン -->
+            <% end %>
+          <% end %>
         </div>
       </div>
     <% end %>
@@ -16,3 +30,5 @@
     <p>その条件に当てはまるカクテルがありませんでした。</p>
     他の条件で再度検索してみて下さい！
   <% end %>
+</div>
+
