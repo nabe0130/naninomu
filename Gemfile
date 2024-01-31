@@ -70,8 +70,6 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
-  gem 'webpacker', '5.4.3'
-
   gem 'better_errors', '>= 2.5.1'
 
   gem 'binding_of_caller', '>= 0.8.0'
