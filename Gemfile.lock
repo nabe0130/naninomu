@@ -352,7 +352,7 @@ DEPENDENCIES
   mailcatcher
   omniauth (= 1.9.1)
   omniauth-google-oauth2
-  pg
+  pg (~> 1.4)
   puma (~> 5.0)
   rails (~> 7.0.7, >= 7.0.7.2)
   selenium-webdriver
