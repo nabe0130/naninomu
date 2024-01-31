@@ -9,10 +9,6 @@ development:
   database: myapp_development
   password:
 
-test:
-  <<: *default
-  database: db/test.sqlite3
-
 production:
   <<: *default
   username: <%= Rails.application.credentials.planetscale&.fetch(:username) %>
