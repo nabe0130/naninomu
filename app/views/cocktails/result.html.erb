@@ -1,5 +1,9 @@
 <h2>貴方におすすめのカクテル</h2>
-5件以上ある場合はランダムに5件表示されます。
+<p style="margin-bottom: 20px;">5件以上ある場合はランダムに5件表示されます。</p>
+
+<% unless current_user %>
+  <p><strong>カクテル結果をお気に入りに登録するには、<%= link_to 'ログイン', new_user_session_path %>してください。</strong></p>
+<% end %>
 
 <div class="cocktails-container">
   <% if @detailed_cocktails.any? %>  <!-- @detailed_cocktailsにデータがあるかどうかをチェック -->
@@ -7,21 +11,26 @@
       <div class="cocktail-card">
         <div class="d-flex align-items-center justify-content-between">
           <div>
-          <h3><%= cocktail["cocktail"]["cocktail_name"] %></h3>
-          <!--  <p>ID: <%= cocktail["cocktail"]["cocktail_id"] %></p>  ここでIDを表示 -->
-          <p><%= cocktail["cocktail"]["cocktail_desc"] %></p>  <!-- カクテルの説明文の表示 -->
-          <p class="alcohol-content">アルコール度数: <%= cocktail["cocktail"]["alcohol"] %>％</p>
+            <h3><%= cocktail["cocktail"]["cocktail_name"] %></h3>
+            <p><%= cocktail["cocktail"]["cocktail_desc"] %></p>  <!-- カクテルの説明文の表示 -->
+            <p class="alcohol-content">アルコール度数: <%= cocktail["cocktail"]["alcohol"] %>％</p>
           </div>
-          <!-- お気に入りボタンを追加 -->
-          <% cocktail_id = cocktail["cocktail"]["cocktail_id"] %>
-          <% if current_user.bookmarks.find_by(drink_id: cocktail_id).present? %>  <!-- 現在のユーザーがこのカクテルをお気に入りに追加しているかどうかをチェック -->
-            <%= link_to drink_bookmarks_path(cocktail_id), method: :delete, remote: true, class: 'favorite-icon-link' do %>
-              <i class="bi bi-heart-fill"></i> <!-- 既にブックマークされている場合のハートアイコン -->
+          <% if current_user %>
+            <!-- お気に入りボタンを追加 -->
+            <% cocktail_id = cocktail["cocktail"]["cocktail_id"] %>
+            <% bookmark = current_user.bookmarks.find_by(drink_id: cocktail_id) %>
+            <% if bookmark.present? %>
+              <%= link_to drink_bookmarks_path(cocktail_id), method: :delete, remote: true, class: 'favorite-icon-link' do %>
+                <i class="bi bi-heart-fill"></i> <!-- 既にブックマークされている場合のハートアイコン -->
+              <% end %>
+            <% else %>
+              <%= link_to drink_bookmarks_path(cocktail_id), method: :post, remote: true, class: 'favorite-icon-link' do %>
+                <i class="bi bi-heart"></i> <!-- ブックマークされていない場合のハートアイコン -->
+              <% end %>
             <% end %>
           <% else %>
-            <%= link_to drink_bookmarks_path(cocktail_id), method: :post, remote: true, class: 'favorite-icon-link' do %>
-              <i class="bi bi-heart"></i> <!-- ブックマークされていない場合のハートアイコン -->
-            <% end %>
+            <!-- ログインしていない場合、お気に入りボタンを表示しないか、またはログインを促すメッセージを表示 -->
+            <!-- ここにメッセージを表示するコードは不要です -->
           <% end %>
         </div>
       </div>
@@ -31,4 +40,3 @@
     他の条件で再度検索してみて下さい！
   <% end %>
 </div>
-
