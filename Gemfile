@@ -35,7 +35,6 @@ gem "omniauth","1.9.1"
 
 gem "omniauth-google-oauth2"
 
-gem "mailcatcher"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -72,6 +71,8 @@ group :development do
   gem 'better_errors', '>= 2.5.1'
 
   gem 'binding_of_caller', '>= 0.8.0'
+
+  #gem "mailcatcher"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
