@@ -10,12 +10,9 @@ development:
 
 production:
   <<: *default
-  username: <%= Rails.application.credentials.planetscale&.fetch(:username) %>
-  password: <%= Rails.application.credentials.planetscale&.fetch(:password) %>
-  database: <%= Rails.application.credentials.planetscale&.fetch(:database) %>
-  host: <%= Rails.application.credentials.planetscale&.fetch(:host) %>
-  ssl_mode: verify_identity
-  sslca: "/etc/ssl/certs/ca-certificates.crt"
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

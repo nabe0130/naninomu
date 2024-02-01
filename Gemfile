@@ -3,8 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.4"
 
-gem 'sqlite3', '~> 1.4'
-
 gem 'webpacker', '5.4.3'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -67,6 +65,8 @@ end
 
 group :development do #開発環境でのみ必要なgemを指定します。
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'sqlite3', '~> 1.4'
+
   gem "web-console"
 
   gem 'better_errors', '>= 2.5.1'
@@ -81,6 +81,10 @@ group :development do #開発環境でのみ必要なgemを指定します。
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
+end
+
+group :production do # 本番環境でのみ必要なgemを指定します。
+  gem 'pg'
 end
 
 group :test do
