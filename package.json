@@ -7,14 +7,14 @@
     "bootstrap": "4.5.3",
     "bootstrap-icons": "^1.11.3",
     "jquery": "^3.7.1",
+    "license": "UNLICENSED",
     "popper.js": "^1.16.1",
-    "turbolinks": "^5.2.0",
-    "license": "UNLICENSED"
+    "turbolinks": "^5.2.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "webpack-dev-server": "^3",
-    "webpack": "^5.90.1",
-    "webpack-cli": "^5.1.4"
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3"
   }
 }
