@@ -60,13 +60,13 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-group :development, :test do
+group :development, :test do # 開発環境とテスト環境でのみ必要なgemを指定します。
   gem 'sqlite3', '~> 1.4'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
-group :development do
+group :development do #開発環境でのみ必要なgemを指定します。
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
@@ -84,8 +84,8 @@ group :development do
 
 end
 
-group :production do
- gem "pg", "~> 1.4"
+group :production do # 本番環境でのみ必要なgemを指定します。
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :test do
