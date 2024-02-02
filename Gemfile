@@ -83,7 +83,7 @@ group :development do #開発環境でのみ必要なgemを指定します。
 end
 
 group :production do # 本番環境でのみ必要なgemを指定します。
-  gem 'pg'
+  gem "pg"
 end
 
 group :test do
