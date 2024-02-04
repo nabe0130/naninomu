@@ -10,7 +10,9 @@ import './alcohol_range';
 
 import './bookmarks'
 
-import 'jquery'
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
 
 // RailsのJavaScript機能をインポート
 import Rails from '@rails/ujs';

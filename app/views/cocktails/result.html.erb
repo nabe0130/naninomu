@@ -19,15 +19,17 @@
             <!-- お気に入りボタンを追加 -->
             <% cocktail_id = cocktail["cocktail"]["cocktail_id"] %>
             <% bookmark = current_user.bookmarks.find_by(drink_id: cocktail_id) %>
-            <% if bookmark.present? %>
-              <%= link_to drink_bookmarks_path(cocktail_id), method: :delete, remote: true, class: 'favorite-icon-link' do %>
-                <i class="bi bi-heart-fill"></i> <!-- 既にブックマークされている場合のハートアイコン -->
+            <div id="bookmark_<%= cocktail_id %>">
+              <% if bookmark.present? %>
+                <%= link_to drink_bookmarks_path(cocktail_id), method: :delete, remote: true, class: 'favorite-icon-link' do %>
+                  <i class="bi bi-heart-fill" id="favorite-icon-<%= cocktail_id %>"></i> <!-- 既にブックマークされている場合のハートアイコン -->
+                <% end %>
+              <% else %>
+                <%= link_to drink_bookmarks_path(cocktail_id), method: :post, remote: true, class: 'favorite-icon-link' do %>
+                  <i class="bi bi-heart" id="favorite-icon-<%= cocktail_id %>"></i> <!-- ブックマークされていない場合のハートアイコン -->
+                <% end %>
               <% end %>
-            <% else %>
-              <%= link_to drink_bookmarks_path(cocktail_id), method: :post, remote: true, class: 'favorite-icon-link' do %>
-                <i class="bi bi-heart"></i> <!-- ブックマークされていない場合のハートアイコン -->
-              <% end %>
-            <% end %>
+            </div>
           <% else %>
             <!-- ログインしていない場合、お気に入りボタンを表示しないか、またはログインを促すメッセージを表示 -->
             <!-- ここにメッセージを表示するコードは不要です -->
