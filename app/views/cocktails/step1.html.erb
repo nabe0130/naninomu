@@ -1,6 +1,6 @@
 <%= form_with(url: step2_cocktails_path, method: "get", class: "form-group") do %>  <!-- フォームを開始。送信先はstep2_cocktails_pathで、メソッドはGET、classはform-group -->
   <fieldset class="mb-3">  <!-- フィールドセットを使用してフォームのセクションをグループ化 -->
-    <legend class="form-label">アルコール度数</legend>
+    <legend class="form-label">アルコール度数は？</legend>
     <div class="btn-group-vertical" role="group" aria-label="Alcohol content">
       <% [['0', 'ノンアルコール'], ['1', '5％前後'], ['8', '10％前後'], ['14', '20%前後'], ['25', '30%以上']].each do |value, label| %>
         <label class="btn btn-outline-primary">
