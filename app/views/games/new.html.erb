@@ -1,11 +1,19 @@
+<div class="d-flex justify-content-center mt-1">
+    <%= form_with url: cocktails_search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0" do |form| %>
+      <%= form.label :word, "検索文字列", class: "sr-only" %>
+      <%= form.text_field :word, placeholder: "カクテルを検索", class: "form-control mr-sm-2" %>
+      <%= form.submit "検索", class: "btn btn-outline-success my-2 my-sm-0" %>
+    <% end %>
+  </div>
+
 <div id="main">
-  <div class="row mt-4">  
+  <div class="row mt-3">  
     <div class="col-12">
         貴方が飲みたいお酒を教えて下さい。<br/>
         準備ができたらゲームを始めてね！
     </div>
   </div>
-  <%= form_with url: games_path, local:true do |f| %>
+    <%= form_with url: games_path, local:true do |f| %>
     <div class="row mt-5">
       <div class="col-6 offset-3">
         <%= f.submit "はじめる", class:'btn btn-primary mb-4' %>
@@ -30,7 +38,7 @@
 </div>
 
 <div class="container mt-5"> <!-- ここにマージントップを追加 -->
-  <div class="text-center">
+  <div class="text-center d-flex flex-row justify-content-center flex-wrap">
     <div class="btn-group" role="group">
       <%= link_to 'お問い合わせ', contact_path, class: 'btn btn-link mr-2' %> <!-- ここにマージンライトを追加 -->
       <%= link_to '利用規約', terms_path, class: 'btn btn-link mr-2' %> <!-- ここにマージンライトを追加 -->
