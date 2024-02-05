@@ -124,3 +124,16 @@ body  {
     cursor: pointer;
   }
   
+
+/* スマホ用のスタイル */
+@media (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    width: auto;
+    margin: 0 10px;
+  }
+  /* 他にもスマホサイズに適応するスタイルをここに追加 */
+}
