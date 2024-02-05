@@ -22,7 +22,6 @@ body  {
   background-color: #357ae8; /* ホバー時の色 */
 }
 
-
 .bi-heart {
   color: grey; /* 未選択時の色 */
 }
@@ -59,7 +58,7 @@ body  {
     justify-content: center;
     gap: 20px;
   }
-  
+
   .cocktail-card {
     display: flex;
     border: 1px solid #ddd;
@@ -68,21 +67,21 @@ body  {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: white;
   }
-  
+
   .cocktail-info {
     margin-left: 20px;
   }
-  
+
   .cocktail-card h3 {
     margin-top: 0;
     color: #333;
   }
-  
+
   .cocktail-card p {
     color: #666;
     font-size: 14px;
   }
-  
+
   .alcohol-content {
     font-weight: bold;
     color: #ff4500;
