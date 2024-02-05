@@ -3,6 +3,20 @@ class CocktailsController < ApplicationController
   require 'uri'
   require 'json'
 
+  def search
+    uri = URI('https://cocktail-f.com/api/v1/cocktails')
+    uri.query = URI.encode_www_form({ word: params[:word], base: params[:base], alcohol_from: params[:alcohol_from], alcohol_to: params[:alcohol_to] })
+
+    response = Net::HTTP.get_response(uri)
+    if response.is_a?(Net::HTTPSuccess)
+      @cocktails = JSON.parse(response.body)["cocktails"]
+    else
+      @error_message = "検索に失敗しました。"
+    end
+  rescue => e
+    @error_message = "検索中にエラーが発生しました: #{e.message}"
+  end
+
 # ステップ1のビューを表示
 def step1
 end

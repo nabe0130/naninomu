@@ -1,0 +1,36 @@
+<h1>検索結果</h1>
+
+<% if @error_message %>
+  <p><%= @error_message %></p>
+<% elsif @cocktails.present? %>
+  <div class="cocktails-container">
+    <% @cocktails.each do |cocktail| %>
+      <div class="cocktail-card">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <h3><%= cocktail["cocktail_name"] %></h3>
+            <p><%= cocktail["cocktail_desc"] %></p>
+            <p class="alcohol-content">アルコール度数: <%= "#{cocktail["alcohol"]}%" %></p>
+          </div>
+          <% if current_user %>
+            <% cocktail_id = cocktail["cocktail_id"] %>
+            <% bookmark = current_user.bookmarks.find_by(drink_id: cocktail_id) %>
+            <div id="bookmark_<%= cocktail_id %>">
+              <% if bookmark.present? %>
+                <%= link_to drink_bookmarks_path(cocktail_id), method: :delete, remote: true, class: 'favorite-icon-link' do %>
+                  <i class="bi bi-heart-fill" id="favorite-icon-<%= cocktail_id %>"></i>
+                <% end %>
+              <% else %>
+                <%= link_to drink_bookmarks_path(cocktail_id), method: :post, remote: true, class: 'favorite-icon-link' do %>
+                  <i class="bi bi-heart" id="favorite-icon-<%= cocktail_id %>"></i>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>該当するカクテルが見つかりませんでした。</p>
+<% end %>
