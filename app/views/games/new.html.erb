@@ -4,7 +4,7 @@
       <%= form_with url: cocktails_search_path, method: :get, local: true, class: "form-inline my-2 my-lg-0" do |form| %>
         <div class="col-md-7">
           <%= form.label :word, "検索文字列", class: "sr-only" %>
-          <%= form.text_field :word, placeholder: "カクテルを検索", class: "form-control mr-sm-3 ml-4" %>
+          <%= form.text_field :word, placeholder: "カクテルを検索", class: "form-control mr-sm-3 ml-6" %>
         </div>
         <div class="col-md-5">
           <%= form.submit "検索", class: "btn btn-outline-success my-2 my-sm-0" %>
@@ -44,12 +44,17 @@
   </div>
 </div>
 
-<div class="container mt-5"> <!-- ここにマージントップを追加 -->
-  <div class="text-center d-flex flex-row justify-content-center flex-wrap">
-    <div class="btn-group" role="group">
-      <%= link_to 'お問い合わせ', contact_path, class: 'btn btn-link' %> <!-- ここにマージンライトを追加 -->
-      <%= link_to '利用規約', terms_path, class: 'btn btn-link' %> <!-- ここにマージンライトを追加 -->
+<div class="container mt-5">
+  <div class="row justify-content-center text-center">
+    <div class="col-12 col-md-auto mb-2">
+      <%= link_to 'お問い合わせ', contact_path, class: 'btn btn-link' %>
+    </div>
+    <div class="col-12 col-md-auto mb-2">
+      <%= link_to '利用規約', terms_path, class: 'btn btn-link' %>
+    </div>
+    <div class="col-12 col-md-auto">
       <%= link_to 'プライバシーポリシー', privacy_path, class: 'btn btn-link' %>
     </div>
   </div>
 </div>
+
