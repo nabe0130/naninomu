@@ -14,6 +14,10 @@
             <h3><%= cocktail["cocktail"]["cocktail_name"] %></h3>
             <p><%= cocktail["cocktail"]["cocktail_desc"] %></p>  <!-- カクテルの説明文の表示 -->
             <p class="alcohol-content">アルコール度数: <%= cocktail["cocktail"]["alcohol"] %>％</p>
+            <!-- Google画像検索へのリンクを追加 -->
+            <p>
+              <%= link_to "カクテルの画像検索", "https://www.google.com/search?tbm=isch&q=#{CGI.escape(cocktail["cocktail"]["cocktail_name"])}", target: "_blank", rel: "noopener" %>
+            </p>
           </div>
           <% if current_user %>
             <!-- お気に入りボタンを追加 -->

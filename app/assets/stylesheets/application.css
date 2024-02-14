@@ -2,6 +2,14 @@ body  {
   background-color: #FAEBD7 !important;
 }
 
+.navbar-nav-right {
+  margin-left: auto !important;
+}
+
+.navbar-custom {
+  background-color: #F5FFFA;
+}
+
 #google-login-btn {
   background-color: #4285F4; /* Googleのブルー */
   color: white;
