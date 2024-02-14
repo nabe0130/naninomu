@@ -14,40 +14,54 @@
 <% end %>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll('.hidden-radio').forEach(function(radio) {
-      radio.addEventListener('change', function() {
-        // 選択されたアルコール度数に基づいてalcohol_toの値を設定
-        let alcoholToValue;
-        switch (this.value) {
-          case '0':
-            alcoholToValue = '0'; // ノンアルコールの場合
-            break;
-          case '1':
-            alcoholToValue = '17'; // 15％前後の場合
-            break;
-          case '18':
-            alcoholToValue = '26'; // 25%前後の場合
-            break;
-          case '27':
-            alcoholToValue = '100'; // 35%以上の場合
-            break;
-          default:
-            alcoholToValue = ''; // デフォルトの場合（該当しない場合）
-        }
-
-        document.getElementById('alcohol_to').value = alcoholToValue;
-
-        // ラベルのアクティブスタイルを更新
-        document.querySelectorAll('.btn-group-vertical .btn').forEach(function(label) {
-          label.classList.remove('active');
-        });
-        if(this.checked) {
-          this.parentElement.classList.add('active');
-        }
-      });
+document.addEventListener("DOMContentLoaded", function() {
+  // フォームを選択
+  var form = document.querySelector('form.form-group');
+  
+  // ラジオボタンの変更イベントを監視
+  document.querySelectorAll('.hidden-radio').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      // アクティブスタイルの更新
+      updateActiveStyles();
+      
+      // 'alcohol_to'の値を設定
+      let alcoholToValue = determineAlcoholToValue(this.value);
+      document.getElementById('alcohol_to').value = alcoholToValue;
     });
   });
+  
+  // フォームの送信イベントを監視
+  form.addEventListener('submit', function(event) {
+    var selectedValue = form.querySelector('input[name="alcohol_from"]:checked').value;
+    // ノンアルコールが選択された場合は、ステップ3へリダイレクト
+    if (selectedValue === '0') {
+      event.preventDefault(); // フォーム送信をキャンセル
+      window.location.href = '/cocktails/step3'; // ステップ3へリダイレクト
+    }
+  });
+});
+
+function updateActiveStyles() {
+  // すべてのラベルからアクティブクラスを削除
+  document.querySelectorAll('.btn-group-vertical .btn').forEach(function(label) {
+    label.classList.remove('active');
+  });
+
+  // 選択されたラジオボタンのラベルにアクティブクラスを追加
+  document.querySelectorAll('.hidden-radio:checked').forEach(function(radio) {
+    radio.closest('.btn').classList.add('active');
+  });
+}
+
+function determineAlcoholToValue(value) {
+  switch (value) {
+    case '0': return '0'; // ノンアルコール
+    case '1': return '17'; // 15％前後
+    case '18': return '26'; // 25%前後
+    case '27': return '100'; // 35%以上
+    default: return ''; // デフォルト
+  }
+}
 </script>
 
 <!--
