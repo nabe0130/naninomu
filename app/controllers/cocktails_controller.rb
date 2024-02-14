@@ -24,6 +24,7 @@ end
 # ステップ1からの選択をビューに渡す
 def step2
   session[:alcohol_from] = params[:alcohol_from]
+  session[:alcohol_to] = params[:alcohol_to]
 end
 
 # ステップ1と2からの選択をビューに渡す
@@ -34,19 +35,10 @@ end
 # 結果を表示するアクション
 def result
   alcohol_from = session[:alcohol_from]
+  alcohol_to = session[:alcohol_to]
   base = session[:base]
   taste_group = params[:taste_group]
   tastes = taste_group.present? ? taste_group.split(',') : []  # 'taste_group' が存在しない場合、空の配列を使用
-
-  # アルコール度数の上限値の設定
-  alcohol_to = case alcohol_from
-                when '0' then '0'  # ノンアルコール
-                when '1' then '8'  # 5％前後
-                when '9' then '15' # 10％前後
-                when '16' then '25' # 20%前後
-                when '26' then '50' # 30%以上
-                else '100' # デフォルトの上限
-              end
 
   # 結果格納用の配列初期化
   @cocktails = []

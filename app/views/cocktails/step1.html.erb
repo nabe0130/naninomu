@@ -2,14 +2,14 @@
   <fieldset class="mb-3">  <!-- フィールドセットを使用してフォームのセクションをグループ化 -->
     <legend class="form-label">アルコール度数は？</legend>
     <div class="btn-group-vertical" role="group" aria-label="Alcohol content">
-      <% [['0', 'ノンアルコール'], ['1', '5％前後'], ['8', '10％前後'], ['14', '20%前後'], ['25', '30%以上']].each do |value, label| %>
+      <% [['0', 'ノンアルコール'], ['1', '1~15％前後'], ['18', '25%前後'], ['27', '35%前後']].each do |value, label| %>
         <label class="btn btn-outline-primary">
           <input type="radio" name="alcohol_from" value="<%= value %>" class="hidden-radio"> <%= label %>
         </label>
       <% end %>
     </div>
   </fieldset>
-  <input type="hidden" name="alcohol_to" value="100">
+  <input type="hidden" id="alcohol_to" name="alcohol_to" value="100">
   <button type="submit" class="btn btn-primary mt-2">次へ</button>
 <% end %>
 
@@ -17,6 +17,28 @@
   document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('.hidden-radio').forEach(function(radio) {
       radio.addEventListener('change', function() {
+        // 選択されたアルコール度数に基づいてalcohol_toの値を設定
+        let alcoholToValue;
+        switch (this.value) {
+          case '0':
+            alcoholToValue = '0'; // ノンアルコールの場合
+            break;
+          case '1':
+            alcoholToValue = '17'; // 15％前後の場合
+            break;
+          case '18':
+            alcoholToValue = '26'; // 25%前後の場合
+            break;
+          case '27':
+            alcoholToValue = '100'; // 35%以上の場合
+            break;
+          default:
+            alcoholToValue = ''; // デフォルトの場合（該当しない場合）
+        }
+
+        document.getElementById('alcohol_to').value = alcoholToValue;
+
+        // ラベルのアクティブスタイルを更新
         document.querySelectorAll('.btn-group-vertical .btn').forEach(function(label) {
           label.classList.remove('active');
         });
@@ -27,7 +49,6 @@
     });
   });
 </script>
-
 
 <!--
 form-group: Bootstrapのフォームグループクラスで、フォーム要素をまとめるために使用します。

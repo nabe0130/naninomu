@@ -1,7 +1,7 @@
 <%= form_with(url: step3_cocktails_path, method: "get", class: "form-group") do %>  <!-- フォームを開始。送信先はstep3_cocktails_pathで、メソッドはGET、classはform-group -->
   <!-- step1 からのデータを隠しフィールドとして設定 -->
   <input type="hidden" name="alcohol_from" value="<%= @alcohol_from %>">
-
+  <input type="hidden" name="alcohol_to" value="<%= @alcohol_to %>">
   <fieldset class="mb-3">
     <legend class="form-label">ベースを選択してね</legend>
     <div class="row">
