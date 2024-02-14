@@ -2,6 +2,10 @@ body  {
   background-color: #FAEBD7 !important;
 }
 
+.navbar-light .navbar-toggler {
+  border: none; /* 枠線を非表示に設定 */
+}
+
 .navbar-nav-right {
   margin-left: auto !important;
 }

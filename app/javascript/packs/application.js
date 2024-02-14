@@ -1,6 +1,8 @@
 // Bootstrap
 import 'bootstrap';
 
+import '@popperjs/core'
+
 // Custom stylesheets
 import '../stylesheets/application';
 
