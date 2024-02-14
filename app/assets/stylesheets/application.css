@@ -64,40 +64,40 @@ body  {
 }
 
 .cocktails-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
 
-  .cocktail-card {
-    display: flex;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: white;
-  }
+.cocktail-card {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
 
-  .cocktail-info {
-    margin-left: 20px;
-  }
+.cocktail-info {
+  margin-left: 20px;
+}
 
-  .cocktail-card h3 {
-    margin-top: 0;
-    color: #333;
-  }
+.cocktail-card h3 {
+  margin-top: 0;
+  color: #333;
+}
 
-  .cocktail-card p {
-    color: #666;
-    font-size: 14px;
-  }
+.cocktail-card p {
+  color: #666;
+  font-size: 14px;
+}
 
-  .alcohol-content {
-    font-weight: bold;
-    color: #ff4500;
-  }
+.alcohol-content {
+  font-weight: bold;
+  color: #ff4500;
+}
 
 /* チェックボックスを非表示にする */
 .hidden-checkbox {
@@ -116,32 +116,75 @@ body  {
     left: -9999px;
   }
 
-  /* ラジオボタン風のラベルスタイル */
-  .custom-radio-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    padding: 0.375rem 0.75rem;
-    border: 1px solid #007bff;
-    border-radius: 0.25rem;
-    text-align: center;
-    color: #007bff;
-    background-color: #fff;
-    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
-  }
-  
-  .custom-radio-label:hover {
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-  }
-  
+/* ラジオボタン風のラベルスタイル */
+.custom-radio-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #007bff;
+  border-radius: 0.25rem;
+  text-align: center;
+  color: #007bff;
+  background-color: #fff;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.custom-radio-label:hover {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* 利用規約、プライバシーポリシー */
+.text-container {
+  background-color: #FAEBD7; /* 背景色 */
+  border-radius: 10px; /* 枠の角を丸める */
+  padding: 20px; /* 内側の余白 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 影をつける */
+  margin-top: 20px; /* 上の余白 */
+  word-wrap: break-word; /* 長い単語も折り返す */
+  white-space: normal; /* テキストを折り返す */
+}
+
+.text-container h4 {
+  color: #333; /* 文字色 */
+  margin-bottom: 15px; /* 下の余白 */
+}
+
+.text-container h5 {
+  color: #00c8ff; /* 文字色 */
+  margin-top: 20px; /* 上の余白 */
+  font-size: 16px; /* 見出しのフォントサイズを調整 */
+  line-height: 1.4;
+}
+
+.text-container p,
+.text-container ul {
+  line-height: 1.6; /* 行間 */
+  color: #555; /* 文字色 */
+  font-size: 14px; /* フォントサイズを小さく */
+}
+
+.text-container ul {
+  padding-left: 20px; /* リストのインデント */
+}
 
 /* スマホ用のスタイル */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .container {
+    width: 100%; /* モバイルデバイスでの幅を100%に設定 */
+    padding: 0 15px; /* 必要に応じてパディングを調整 */
+  }
+  .text-container p, .text-container h4, .text-container h5,
+  .container p, .container h1, .container h2 {
+    font-size: smaller; /* フォントサイズを小さくする */
+    line-height: 1.5; /* 行間を適切に設定 */
+    padding: 5px; /* パディングを小さく設定 */
+    margin: 10px 0; /* マージンを適切に設定 */
+  }
   .sidebar {
     display: none;
   }
-
   .main-content {
     width: auto;
     margin: 0 10px;
