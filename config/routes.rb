@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post 'contact', to: 'static_pages#confirm'  # お問い合わせ確認画面へのルーティング
   post 'contact/done', to: 'static_pages#done' # お問い合わせ完了処理のルーティング
   get 'cocktails/search', to: 'cocktails#search', as: :cocktails_search
+  get 'consult_master', to: 'masters#consult', as: 'consult_master'
 
   # GamesControllerのnewアクションに対するルーティング
   get '/games', to: 'games#new'
