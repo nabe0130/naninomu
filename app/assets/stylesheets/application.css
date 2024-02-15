@@ -2,6 +2,63 @@ body  {
   background-color: #FAEBD7 !important;
 }
 
+.btn-primary.speech-bubble-button {
+  position: absolute;
+  top: -320px; /* 親要素から上に50pxの位置 */
+  right: 220px; /* 親要素から右に20pxの位置 */
+  display: inline-block;
+  padding: 15px 15px;
+  background-color: #FFEFD5; /* ボタンの背景色 */
+  color: #111111; /* テキストの色 */
+  font-size: 16px;
+  border: 1px solid #DCDCDC; /* 枠線を黒色に */
+  border-radius: 10px; /* ボタンの角を丸くする */
+  transition: transform 0.3s; /* ホバー時の変化を滑らかに */
+  text-align: center; /* テキストを中央揃え */
+  white-space: nowrap; /* テキストを折り返さない */
+  writing-mode: vertical-lr; /* テキストの書き方を縦書きに */
+}
+
+.btn-primary.speech-bubble-button::before {
+  content: '';
+  position: absolute;
+  top: 50%; /* ボタンの縦中央からの位置 */
+  left: -12px; /* ボタンの左側からの位置を少し外側に */
+  transform: translateY(-50%); /* Y軸方向の中央に合わせる */
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent; /* 上側の境界線（枠用） */
+  border-bottom: 6px solid transparent; /* 下側の境界線（枠用） */
+  border-right: 12px solid #DCDCDC; /* 右側（ボタン側）の境界線の色（枠用） */
+}
+
+.btn-primary.speech-bubble-button::after {
+  content: '';
+  position: absolute;
+  top: 50%; /* ボタンの縦中央からの位置 */
+  left: -10px; /* ボタンの左側からの位置を指定 */
+  transform: translateY(-50%); /* Y軸方向の中央に合わせる */
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent; /* 上側の境界線（本体） */
+  border-bottom: 5px solid transparent; /* 下側の境界線（本体） */
+  border-right: 10px solid #FFEFD5; /* 右側（ボタン側）の境界線の色（本体） */
+}
+
+.btn-primary.speech-bubble-button:hover {
+  transform: scale(1.1); /* ホバー時に少し大きくする */
+  background-color: #FAEBD7; /* ホバー時もボタンの背景色を保持 */
+  color: #111111; /* ホバー時もテキストの色を保持 */
+  border: 1px solid #D3D3D3; /* 枠線 */
+}
+
+.btn-primary.speech-bubble-button:focus {
+  background-color: #FFEFD5; /* アクティブ時もボタンの背景色を保持 */
+  color: #111111; /* アクティブ時もテキストの色を保持 */
+  box-shadow: none; /* アクティブ時のボックスシャドウを除去 */
+  border: 1px solid #D3D3D3; /* 枠線 */
+}
+
 .navbar-light .navbar-toggler {
   border: none; /* 枠線を非表示に設定 */
 }
