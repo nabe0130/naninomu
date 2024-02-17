@@ -2,6 +2,39 @@ body  {
   background-color: #FAEBD7 !important;
 }
 
+.card {
+  border-radius: 10px; /* 角の丸みを追加 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* カードに影を追加 */
+  transition: transform 0.3s ease-in-out; /* ホバー時のアニメーションをスムーズに */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* ホバー時にカードを少し持ち上げる */
+}
+
+.card-title {
+  color: #212529; /* Bootstrapのプライマリーカラーを使用 */
+  font-weight: bold; /* タイトルの文字を太く */
+  letter-spacing: 0.5px; /* 文字間隔を少し広げる */
+}
+
+.card-text {
+  color: #555; /* テキストの色を少し暗めに設定 */
+  font-size: 14px; /* フォントサイズを指定 */
+}
+
+.card .btn-primary {
+  background-color: #007bff; /* ボタンの背景色 */
+  border: none; /* ボタンの枠線を削除 */
+  border-radius: 20px; /* ボタンの角を丸くする */
+  padding: 10px 20px; /* ボタンのパディングを調整 */
+  transition: background-color 0.3s ease-in-out; /* 色の変化をスムーズに */
+}
+
+.card .btn-primary:hover {
+  background-color: #0056b3; /* ホバー時の背景色を少し暗く */
+}
+
 /* モーダルコンテンツ全体のスタイル */
 .modal-content {
   border-radius: 8px; /* 角の丸み */

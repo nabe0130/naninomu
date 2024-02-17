@@ -1,0 +1,58 @@
+<h3>こんなカクテルはどうですか？</h3>
+
+<% if @error_message %>
+  <p><%= @error_message %></p>
+<% else %>
+
+<% unless current_user %>
+  <p><strong>カクテル結果をお気に入りに登録するには、<%= link_to 'ログイン', new_user_session_path %>してください。</strong></p>
+<% end %>
+
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-md-6">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="card-title"><%= cocktail["cocktail_name"] %></h5>
+
+              <%# お気に入りボタンの追加 %>
+          <% cocktail_id = cocktail["cocktail_id"] %>
+          <% bookmark = current_user.bookmarks.find_by(drink_id: cocktail_id) %>
+          <div id="bookmark_<%= cocktail_id %>">
+            <% if bookmark.present? %>
+              <%= link_to drink_bookmarks_path(cocktail_id), method: :delete, remote: true, class: 'favorite-icon-link' do %>
+                <i class="bi bi-heart-fill" id="favorite-icon-<%= cocktail_id %>"></i> <!-- 既にブックマークされている場合 -->
+              <% end %>
+            <% else %>
+              <%= link_to drink_bookmarks_path(cocktail_id), method: :post, remote: true, class: 'favorite-icon-link' do %>
+                <i class="bi bi-heart" id="favorite-icon-<%= cocktail_id %>"></i> <!-- ブックマークされていない場合 -->
+              <% end %>
+            <% end %>
+            </div>
+          </div>
+
+            <!-- Flexbox コンテナーを追加 -->
+            <div class="d-flex justify-content-between">
+              <p class="card-text"><%= cocktail["base_name"] %></p>
+              <p class="card-text">アルコール度数: <%= cocktail["alcohol"] %>%</p>
+            </div>
+
+            <p class="card-text"><%= cocktail["cocktail_desc"] %></p>
+            <% if cocktail["recipes"].present? %>
+              <h6>Recipe</h6>
+              <ul>
+                <% cocktail["recipes"].each do |recipe| %>
+                  <li>
+                    <%= recipe["ingredient_name"] %>:
+                    <%= recipe["amount"].present? ? "#{recipe["amount"]} #{recipe["unit"]}" : "適量" %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

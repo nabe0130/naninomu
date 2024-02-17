@@ -39,6 +39,10 @@ gem "omniauth","1.9.1"
 
 gem "omniauth-google-oauth2"
 
+gem 'byebug' # すでにRailsに含まれている場合が多い
+
+gem 'pry-rails' # pryをRailsで使いやすくする
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

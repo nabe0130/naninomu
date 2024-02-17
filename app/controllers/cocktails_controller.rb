@@ -6,7 +6,6 @@ class CocktailsController < ApplicationController
   def search
     uri = URI('https://cocktail-f.com/api/v1/cocktails')
     uri.query = URI.encode_www_form({ word: params[:word], base: params[:base], alcohol_from: params[:alcohol_from], alcohol_to: params[:alcohol_to] })
-
     response = Net::HTTP.get_response(uri)
     if response.is_a?(Net::HTTPSuccess)
       @cocktails = JSON.parse(response.body)["cocktails"]
