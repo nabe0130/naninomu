@@ -15,39 +15,17 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // フォームを選択
-  var form = document.querySelector('form.form-group');
-  
-  // ラジオボタンの変更イベントを監視
   document.querySelectorAll('.hidden-radio').forEach(function(radio) {
     radio.addEventListener('change', function() {
-      // アクティブスタイルの更新
       updateActiveStyles();
-      
-      // 'alcohol_to'の値を設定
-      let alcoholToValue = determineAlcoholToValue(this.value);
-      document.getElementById('alcohol_to').value = alcoholToValue;
     });
-  });
-  
-  // フォームの送信イベントを監視
-  form.addEventListener('submit', function(event) {
-    var selectedValue = form.querySelector('input[name="alcohol_from"]:checked').value;
-    // ノンアルコールが選択された場合は、ステップ3へリダイレクト
-    if (selectedValue === '0') {
-      event.preventDefault(); // フォーム送信をキャンセル
-      window.location.href = '/cocktails/step3'; // ステップ3へリダイレクト
-    }
   });
 });
 
 function updateActiveStyles() {
-  // すべてのラベルからアクティブクラスを削除
   document.querySelectorAll('.btn-group-vertical .btn').forEach(function(label) {
     label.classList.remove('active');
   });
-
-  // 選択されたラジオボタンのラベルにアクティブクラスを追加
   document.querySelectorAll('.hidden-radio:checked').forEach(function(radio) {
     radio.closest('.btn').classList.add('active');
   });

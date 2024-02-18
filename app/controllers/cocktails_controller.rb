@@ -23,7 +23,13 @@ end
 # ステップ1からの選択をビューに渡す
 def step2
   session[:alcohol_from] = params[:alcohol_from]
-  session[:alcohol_to] = params[:alcohol_to]
+  if params[:alcohol_from] == '0'
+    session[:alcohol_to] = '0' # ノンアルコールの場合、alcohol_toも'0'に設定
+    redirect_to step3_cocktails_path # ステップ3へリダイレクト
+  else
+    session[:alcohol_to] = params[:alcohol_to] # 通常の処理
+    # ここで次のステップへ進むための処理を追加
+  end
 end
 
 # ステップ1と2からの選択をビューに渡す

@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_17_234227) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_29_234244) do
   create_table "bookmarks", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "cocktail_id"
+    t.integer "user_id"
+    t.integer "drink_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "drink_id"
+    t.index ["drink_id"], name: "index_bookmarks_on_drink_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
@@ -67,5 +67,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_234227) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookmarks", "drinks"
   add_foreign_key "bookmarks", "users"
 end
