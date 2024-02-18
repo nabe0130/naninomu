@@ -2,6 +2,42 @@ body  {
   background-color: #FAEBD7 !important;
 }
 
+/* ページネーションコンテナのスタイリング */
+nav.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  list-style: none;
+}
+
+/* 全てのページとナビゲーション要素のスタイリング */
+nav.pagination span {
+  margin: 0 5px; /* 要素間の隙間 */
+}
+
+/* リンクが含まれるspan要素のスタイル */
+nav.pagination span a {
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #337ab7; /* リンクの色 */
+  background-color: #f5f5f5; /* 背景色 */
+  border: 1px solid #ddd; /* 境界線 */
+  border-radius: 5px; /* 角の丸み */
+}
+
+nav.pagination span a:hover {
+  background-color: #ddd; /* ホバー時の背景色 */
+}
+
+/* 無効なリンクのスタイリング */
+nav.pagination .disabled a, nav.pagination .disabled a:hover {
+  color: #ccc;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  cursor: not-allowed;
+}
+
 .card {
   border-radius: 10px; /* 角の丸みを追加 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* カードに影を追加 */

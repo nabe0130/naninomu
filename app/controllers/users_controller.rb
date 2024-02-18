@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
       @user = User.find(params[:id])
-      # 他の必要なコード
+      @bookmarks = @user.bookmarks.page(params[:page]).per(5) # 例: 1ページあたり5項目
   end
 end

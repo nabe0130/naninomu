@@ -1,10 +1,10 @@
-<h2>お気に入り一覧</h2>
+<h3>お気に入り一覧</h3>
 <div class="cocktail-card">
   <div class="cocktail-info">  <!-- カクテル情報を表示するためのコンテナ -->
-    <% @user.bookmarks.each do |bookmark| %>  <!-- ユーザーのお気に入り（bookmarks）を繰り返し処理して表示 -->
+    <% @bookmarks.each do |bookmark| %>  <!-- ページネーションが適用されたブックマークを繰り返し処理して表示 -->
         <div class="cocktail-info d-flex align-items-center justify-content-between">
         <div>
-            <h5><%= bookmark.drink.name %></h5>
+            <h6><%= bookmark.drink.name %></h6>
             <p><%= bookmark.drink.description %></p>
         </div>
         <!-- お気に入りから削除するためのリンク。クリックするとお気に入りから削除される -->
@@ -13,5 +13,6 @@
         <% end %>
         </div>
     <% end %>
-    </div>
+    <%= paginate @bookmarks %>
   </div>
+</div>
