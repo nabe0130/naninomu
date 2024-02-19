@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_29_234244) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_19_002454) do
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id"
     t.integer "drink_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_29_234244) do
     t.integer "cocktail_id"
     t.text "description"
     t.string "image_url"
+    t.string "cocktail_name"
   end
 
   create_table "games", force: :cascade do |t|

@@ -21,6 +21,7 @@ class Drink < ApplicationRecord # Drinkクラスを定義します。このク�
         Drink.find_or_create_by(cocktail_id: drink_data["cocktail_id"]) do |d| # カクテルIDに基づいて、レコードが存在しない場合は新しく作成します。
           d.name = drink_data["cocktail_name"] # カクテル名を設定します。
           d.description = drink_data["cocktail_desc"] # カクテルの説明を設定します。
+          d.cocktail_name = drink_data["cocktail_name"] # 追加: カクテル名を設定します。
           # ここで他の属性も設定することができます。
         end
       end
