@@ -19,7 +19,7 @@
       %>
       <% bases.each_with_index do |(value, label), index| %>  <!-- bases配列の各要素に対してループを実行。要素はvalueとlabelのペア、indexは要素のインデックス -->
         <% if index % 3 == 0 %><div class="col-md-4"><% end %>
-          <label class="btn btn-outline-primary d-block mb-2">
+          <label class="btn btn-outline-secondary rounded d-block mb-2">
             <input type="radio" name="base" value="<%= value %>" id="base<%= value %>"class="hidden-radio"> <%= label %>
           </label>
         <% if (index + 1) % 3 == 0 || index == bases.length - 1 %></div><% end %>
@@ -27,7 +27,7 @@
     </div>
   </fieldset>
 
-  <button type="submit" class="btn btn-primary mt-2">次へ</button>
+  <button type="submit" class="btn btn-outline-secondary rounded mt-2">次へ</button>
 <% end %>
 
 <script>

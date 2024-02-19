@@ -1,19 +1,19 @@
 <h3>マスターに相談する</h3>
-
+<p>気分や雰囲気などでこの中から選んでみて! 一覧が表示されるよ!<p>
 <div class="container">
-  <div class="row"> <!-- この行を追加 -->
+  <div class="row">
     <% @cards.each do |card| %>
-      <div class="col-sm-6 mb-4">
-        <div class="card h-100" style="<%= 'background-image: url(' + asset_path(card[:image_file]) + ');' if card[:image_file].present? %> background-size: cover; color: white;">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class=" service card h-100 text-center card-custom" style="background: #FFF; color: #333;">
           <div class="card-body">
             <h5 class="card-title"><%= card[:title] %></h5>
             <p class="card-text"><%= card[:text] %></p>
-            <%= link_to masters_result_path(card[:search_params]), class: "btn btn-default btn-lg" do %>
+            <%= link_to masters_result_path(card[:search_params]), class: "btn btn-light rounded-pill btn-custom-border px-4" do %>
               <i class="glyphicon glyphicon-glass"></i> 選択
             <% end %>
           </div>
         </div>
       </div>
     <% end %>
-  </div> <!-- この行を追加 -->
+  </div>
 </div>

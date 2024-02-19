@@ -15,18 +15,18 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-custom py-3 mb-5">
       <div class="container">
-    <%= link_to image_tag('naninomu_top.png', width:150), games_path, class: 'navbar-brand' %>
+    <%= link_to image_tag('naninomu_top1.png', width:150), games_path, class: 'navbar-brand' %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav navbar-nav-right">
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <%= form_with url: cocktails_search_path, method: :get, local: true, class: "d-flex" do |form| %>
-            <%= form.text_field :word, placeholder: "カクテルを検索", class: "form-control me-2" %>
-            <%= form.submit "検索", class: "btn btn-outline-success" %>
+            <%= form.text_field :word, placeholder: "カクテルを検索", class: "form-control form-control-sm me-3 search-field" %>
+            <%= form.submit "検索", class: "btn btn-outline-light btn-sm me-5 rounded" %>
           <% end %>
         </li>
         <% if user_signed_in? %>
@@ -50,21 +50,41 @@
 </nav>
 
 
-    <div class="container text-center">
-      <header class="row mb-3">
-        <div class="col-12">
-          <%= link_to image_tag('title.png', width: 300), games_path %>
-          <br>
-          <%= image_tag 'naninomu.png', {width: 350} %>
-      </header>
+<div class="container text-center">
+  <header class="row mb-3">
+    <div class="col-12">
+      <%= image_tag 'naninomu.png', {width: 350} %>
+  </header>
 
-      <main class="row">
-        <div class="col-8 offset-2">
-          <div id="flash-messages"></div> <!-- フラッシュメッセージ表示用のコンテナ -->
-          <%= yield %>
-        </div>
-      </main>
+  <main class="row">
+    <div class="col-8 offset-2">
+      <div id="flash-messages"></div> <!-- フラッシュメッセージ表示用のコンテナ -->
+      <%= yield %>
     </div>
+  </main>
+</div>
+
+<footer class="mt-5">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 d-flex align-items-center">
+          <h2 class="text-white mt-5 custom-margin">Naninomu</h2>
+        </div>
+<div class="container ms-4">
+  <div class="row justify-content-center text-center">
+    <div class="col-12 col-md-auto mb-2">
+      <a href="<%= contact_path %>" class="btn btn-link">お問い合わせ</a>
+    </div>
+    <div class="col-12 col-md-auto mb-2">
+      <a href="<%= terms_path %>" class="btn btn-link">利用規約</a>
+    </div>
+    <div class="col-12 col-md-auto">
+      <a href="<%= privacy_path %>" class="btn btn-link">プライバシーポリシー</a>
+    </div>
+  </div>
+</div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>

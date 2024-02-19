@@ -3,14 +3,14 @@
     <legend class="form-label">アルコール度数は？</legend>
     <div class="btn-group-vertical" role="group" aria-label="Alcohol content">
       <% [['0', 'ノンアルコール'], ['1', '1~15％前後'], ['18', '25%前後'], ['27', '35%前後']].each do |value, label| %>
-        <label class="btn btn-outline-primary">
+        <label class="btn btn-outline-secondary rounded mb-2">
           <input type="radio" name="alcohol_from" value="<%= value %>" class="hidden-radio"> <%= label %>
         </label>
       <% end %>
     </div>
   </fieldset>
   <input type="hidden" id="alcohol_to" name="alcohol_to" value="100">
-  <button type="submit" class="btn btn-primary mt-2">次へ</button>
+  <button type="submit" class="btn btn-outline-secondary rounded mt-2">次へ</button>
 <% end %>
 
 <script>
@@ -30,6 +30,7 @@ function updateActiveStyles() {
     radio.closest('.btn').classList.add('active');
   });
 }
+
 
 function determineAlcoholToValue(value) {
   switch (value) {

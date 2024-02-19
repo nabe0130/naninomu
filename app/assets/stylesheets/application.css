@@ -1,5 +1,92 @@
-body  {
-  background-color: #FAEBD7 !important;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700;900&family=Sora:wght@400;700&display=swap");
+
+:root {
+  --primary: #0d6efd;
+  --dark: #21252f;
+  --body: #888;
+  /* --orange: rgb(221, 155, 94); */
+  --box-shadow: 0 6px 17px rgba(0, 0, 0, 0.4);
+}
+
+body {
+  background-color: #FAEBD7;
+  font-family: Sora, "sans-serif";
+  line-height: 1.7;
+  color: var(--body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-4 {
+  color: var(--dark);
+  font-weight: 700;
+}
+
+a {
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.btn {
+  padding: 12px 16px;
+  border-width: 1px;
+  border-radius: 0;
+}
+
+.navbar .nav-link {
+  color: #fff !important;
+  font-size: 14px;
+  font-weight: 700;
+  padding-top: 15px;
+}
+
+.card-effect {
+  box-shadow: var(--box-shadow);
+  background-color: #faffff;
+  padding: 25px;
+  transition: all 0.35s ease;
+}
+
+.card-effect:hover {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+.service {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+.service::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background-color: #696969;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.service:hover h5,
+.service:hover p {
+  color: white;
+}
+
+.service:hover .iconbox {
+  background-color: #fff;
+  color: var(--primary);
+}
+
+.service:hover::after {
+  opacity: 1;
+  top: 0;
 }
 
 /* ページネーションコンテナのスタイリング */
@@ -122,8 +209,8 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
 
 .btn-primary.speech-bubble-button {
   position: absolute;
-  top: -320px; /* 親要素から上に50pxの位置 */
-  right: 220px; /* 親要素から右に20pxの位置 */
+  top: -130px; /* 親要素から上に50pxの位置 */
+  right: 230px; /* 親要素から右に20pxの位置 */
   display: inline-block;
   padding: 15px 15px;
   background-color: #FFEFD5; /* ボタンの背景色 */
@@ -134,7 +221,6 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
   transition: transform 0.3s; /* ホバー時の変化を滑らかに */
   text-align: center; /* テキストを中央揃え */
   white-space: nowrap; /* テキストを折り返さない */
-  writing-mode: vertical-lr; /* テキストの書き方を縦書きに */
 }
 
 .btn-primary.speech-bubble-button:hover {
@@ -155,12 +241,35 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
   border: none; /* 枠線を非表示に設定 */
 }
 
-.navbar-nav-right {
-  margin-left: auto !important;
-}
 
 .navbar-custom {
   background-color: #F5FFFA;
+}
+
+.search-field {
+  width: 250px; /* 幅を250pxに固定 */
+}
+
+.btn-custom-border {
+  border-color: black !important; /* 枠線を黒色に設定 */
+}
+
+.footer-top {
+  padding-bottom: 50px;
+  padding: 0px;
+  background-color: #212529;
+}
+
+.footer-top a {
+  color: var(--body);
+}
+
+.footer-top a:hover {
+  color: #fff;
+}
+
+.custom-margin {
+  margin-top: 0rem; /* または希望する値に */
 }
 
 #google-login-btn {
@@ -324,6 +433,7 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
     width: 100%; /* モバイルデバイスでの幅を100%に設定 */
     padding: 0 15px; /* 必要に応じてパディングを調整 */
   }
+
   .text-container p, .text-container h4, .text-container h5,
   .container p, .container h1, .container h2 {
     font-size: smaller; /* フォントサイズを小さくする */
@@ -331,12 +441,18 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
     padding: 5px; /* パディングを小さく設定 */
     margin: 10px 0; /* マージンを適切に設定 */
   }
+
   .sidebar {
     display: none;
   }
+
   .main-content {
     width: auto;
     margin: 0 10px;
+  }
+
+  .navbar-brand {
+    margin-bottom: 0.5rem; /* Bootstrapのmb-3と同じマージンを適用 */
   }
   /* 他にもスマホサイズに適応するスタイルをここに追加 */
 }

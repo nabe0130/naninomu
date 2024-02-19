@@ -5,9 +5,12 @@
   </div>
 
 <!-- モーダルを開くためのボタン -->
-<button type="button" class="btn btn-primary speech-bubble-button" data-toggle="modal" data-target="#hamsterModal">
-  マスター紹介はここ
-</button>
+<div class="d-flex justify-content-center">
+  <button type="button" class="btn btn-primary speech-bubble-button" data-toggle="modal" data-target="#hamsterModal">
+    マスター紹介はここ
+  </button>
+</div>
+
 
 <!-- モーダル -->
 <div class="modal fade" id="hamsterModal" tabindex="-1" aria-labelledby="hamsterModalLabel" aria-hidden="true">
@@ -35,38 +38,24 @@
   </div>
 </div>
 
-<div id="main">
-  <div class="row mt-3">  
-    <div class="col-12">
-        飲みたいお酒を教えて下さい。<br/>
-        どういったお酒が飲みたい？
-    </div>
-  </div>
-    <%= form_with url: games_path, local:true do |f| %>
-    <div class="row mt-5">
-      <div class="col-6 offset-3">
-        <%= f.submit "はじめる", class:'btn btn-primary mb-4' %>
+<%= form_with url: games_path, local: true do |f| %>
+  <div class="row g-4 justify-content-center">
+    <!-- ゲームを始めるカード -->
+    <div class="col-lg-4 col-md-6">
+      <div class="service card-effect text-center card-custom">
+        <h5 class="mt-4 mb-2">ゲームを始める</h5>
+        <p>絞り込み形式でオススメのお酒選別して提案します。</p>
+        <%= f.submit "はじめる", class: 'btn btn-light rounded-pill btn-custom-border' %>
       </div>
     </div>
-    <% end %>
-
-<div class="row mt-3">
-  <div class="col-6 offset-3 text-center">
-    <%= link_to 'マスターに相談する', consult_master_path, class: 'btn btn-secondary' %>
-  </div>
-</div>
-
-<div class="container mt-5">
-  <div class="row justify-content-center text-center">
-    <div class="col-12 col-md-auto mb-2">
-      <%= link_to 'お問い合わせ', contact_path, class: 'btn btn-link' %>
-    </div>
-    <div class="col-12 col-md-auto mb-2">
-      <%= link_to '利用規約', terms_path, class: 'btn btn-link' %>
-    </div>
-    <div class="col-12 col-md-auto">
-      <%= link_to 'プライバシーポリシー', privacy_path, class: 'btn btn-link' %>
+    
+    <!-- マスターに相談するカード -->
+    <div class="col-lg-4 col-md-6">
+      <div class="service card-effect text-center card-custom">
+        <h5 class="mt-4 mb-2">マスターに相談する</h5>
+        <p>その日の気分でカクテルを選びたい方。</p>
+        <%= link_to '選んでみる', consult_master_path, class: 'btn btn-light rounded-pill btn-custom-border' %>
+      </div>
     </div>
   </div>
-</div>
-
+<% end %>
