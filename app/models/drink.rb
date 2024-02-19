@@ -3,7 +3,14 @@ require 'json' # JSONライブラリを読み込みます。これによりJSON�
 
 class Drink < ApplicationRecord # Drinkクラスを定義します。このクラスはActiveRecord::Baseを継承しており、Railsのモデルとして機能します。
   has_many :bookmarks, :dependent => :destroy
-  
+
+  scope :with_bookmarks_count, -> {
+    joins(:bookmarks)
+      .select('drinks.*, COUNT(bookmarks.id) AS bookmarks_count')
+      .group('drinks.id')
+      .order('bookmarks_count DESC')
+  }
+
   BASE_URL = "https://cocktail-f.com/api/v1/cocktails" # APIのベースURLを定数として定義します。
 
   def self.fetch_and_save_cocktails # クラスメソッド 'fetch_and_save_cocktails' を定義します。このメソッドはAPIからカクテルデータを取得し、データベースに保存するために使用されます。

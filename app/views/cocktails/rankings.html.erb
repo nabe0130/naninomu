@@ -1,0 +1,26 @@
+<h5>カクテル人気ランキング</h5>
+<p>このサイトのお気に入り数でランキングつけてます！<p>
+<ul class="list-group">
+  <% @drinks.each_with_index do |drink, index| %>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <%= "#{index + 1}位: #{drink.name}" %>
+      <% if user_signed_in? %>
+        <% bookmark = current_user.bookmarks.find_by(drink_id: drink.id) %>
+        <div id="bookmark_<%= drink.id %>">
+          <% if bookmark.present? %>
+            <%= link_to drink_bookmarks_path(drink.id), method: :delete, remote: true, class: 'favorite-icon-link' do %>
+              <i class="bi bi-heart-fill"></i> <!-- 既にブックマークされている場合 -->
+            <% end %>
+          <% else %>
+            <%= link_to drink_bookmarks_path(drink.id), method: :post, remote: true, class: 'favorite-icon-link' do %>
+              <i class="bi bi-heart"></i> <!-- ブックマークされていない場合 -->
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <!-- ログインしていない場合の処理 -->
+      <% end %>
+      <span class="badge bg-primary rounded-pill"></span>
+    </li>
+  <% end %>
+</ul>

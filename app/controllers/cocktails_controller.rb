@@ -3,6 +3,10 @@ class CocktailsController < ApplicationController
   require 'uri'
   require 'json'
 
+  def rankings
+    @drinks = Drink.with_bookmarks_count.limit(5) # ここに.limit(5)を追加
+  end
+
   def search
     uri = URI('https://cocktail-f.com/api/v1/cocktails')
     uri.query = URI.encode_www_form({ word: params[:word], base: params[:base], alcohol_from: params[:alcohol_from], alcohol_to: params[:alcohol_to] })

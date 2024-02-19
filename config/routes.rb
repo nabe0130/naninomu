@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'consult_master', to: 'masters#consult', as: 'consult_master'
   get 'masters/search', to: 'masters#search', as: 'masters_search'
   get 'masters/result', to: 'masters#result', as: 'masters_result'
+  get 'rankings', to: 'cocktails#rankings', as: 'rankings'
 
   # GamesControllerのnewアクションに対するルーティング
   get '/games', to: 'games#new'
