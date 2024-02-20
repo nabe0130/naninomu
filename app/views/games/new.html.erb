@@ -1,26 +1,34 @@
-<div class="container">
-  <div class="d-flex justify-content-center mt-1">
-    <div class="col-auto">
+<% content_for :hero do %>
+  <div class="hero vh-100 d-flex align-items-center" id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 mx-auto text-center">
+          <h1 class="display-4 text-white">貴方好みのカクテルを</h1>
+          <p class="text-white my-3">
+            BARなどでバーテンダーの方にお酒について聞きづらい雰囲気な時ありませんか？Naninomuでは飲みたいお酒が分からない、度数はどれぐらいなのか、お気に入りの一杯を探してる。
+            様々な方達に対してカクテルについて詳しくなくても注文、興味が持てるように貴方好みのお酒を提供します。
+          </p>
+        </div>
+      </div>
     </div>
   </div>
+<% end %>
 
-<!-- モーダルを開くためのボタン -->
 <div class="d-flex justify-content-center">
-  <button type="button" class="btn btn-primary speech-bubble-button" data-toggle="modal" data-target="#hamsterModal">
-    マスター紹介はここ
+  <button type="button" class="btn btn-light rounded-pill btn-custom-border mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    マスターの紹介
   </button>
 </div>
 
-
 <!-- モーダル -->
-<div class="modal fade" id="hamsterModal" tabindex="-1" aria-labelledby="hamsterModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content" style="background-image: url(<%= asset_path 'modal.png' %>); background-size: cover; background-position: center;">
+    <div class="modal-content" style="background-image: url('<%= asset_path('modal.png') %>'); background-size: cover; background-position: center;">>
       <div class="modal-header">
-        <h5 class="modal-title" id="hamsterModalLabel">マスターの紹介（豆知識）</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title text-white" id="exampleModalLabel">マスターの紹介（豆知識）</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-white">
         <!-- アプリの使い方についての説明 -->
         <p>なぜハムスターがバーテンダーをしてるのか？</p>
         <p>自然界での最強の酒豪、それが意外にもあの小さいハムスター。
@@ -32,7 +40,7 @@
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        <button type="button" class="btn btn-light rounded-pill btn-custom-border" data-bs-dismiss="modal">閉じる</button>
       </div>
     </div>
   </div>
@@ -48,7 +56,7 @@
         <%= f.submit "はじめる", class: 'btn btn-light rounded-pill btn-custom-border' %>
       </div>
     </div>
-    
+
     <!-- マスターに相談するカード -->
     <div class="col-lg-4 col-md-6">
       <div class="service card-effect text-center card-custom">
