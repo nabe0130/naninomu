@@ -8,8 +8,9 @@ class CocktailsController < ApplicationController
   end
 
   def autocomplete
-    if params[:term].present?
-      @cocktails = Drink.where('name LIKE ?', "%#{params[:term]}%")
+    term = Moji.hira_to_kata(params[:term])
+    if term.present?
+      @cocktails = Drink.where('name LIKE ?', "%#{term}%")
     else
       @cocktails = Drink.none
     end
