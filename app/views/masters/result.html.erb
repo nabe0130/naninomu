@@ -15,6 +15,7 @@
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
               <h5 class="card-title"><%= cocktail["cocktail_name"] %></h5>
+              <%# お気に入りボタンの追加 %>
               <% if current_user %>
                 <% cocktail_id = cocktail["cocktail_id"] %>
                 <% bookmark = current_user.bookmarks.find_by(drink_id: cocktail_id) %>
@@ -31,6 +32,7 @@
                 </div>
               <% end %>
             </div>
+            <!-- Flexbox コンテナーを追加 -->
             <div class="d-flex justify-content-between">
               <p class="card-text">Base.<%= cocktail["base_name"] %></p>
               <p class="card-text">アルコール度数: <%= cocktail["alcohol"] %>%</p>

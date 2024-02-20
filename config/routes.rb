@@ -26,9 +26,14 @@ Rails.application.routes.draw do
   get 'masters/search', to: 'masters#search', as: 'masters_search'
   get 'masters/result', to: 'masters#result', as: 'masters_result'
   get 'rankings', to: 'cocktails#rankings', as: 'rankings'
+  get 'cocktails/autocomplete', to: 'cocktails#autocomplete'
 
   # GamesControllerのnewアクションに対するルーティング
   get '/games', to: 'games#new'
+
+  resources :cocktails do
+    get 'autocomplete', on: :collection
+  end
 
   resources :drinks do
     resource :bookmarks, only: [:create, :destroy]
