@@ -2,7 +2,7 @@
 <div class="cocktail-card">
   <div class="cocktail-info">  <!-- カクテル情報を表示するためのコンテナ -->
     <% @bookmarks.each do |bookmark| %>  <!-- ページネーションが適用されたブックマークを繰り返し処理して表示 -->
-        <div class="cocktail-info d-flex align-items-center justify-content-between">
+        <div class="cocktail-info d-flex align-items-center justify-content-between mb-3">
         <div>
             <h6><%= bookmark.drink.name %></h6>
             <p><%= bookmark.drink.description %></p>

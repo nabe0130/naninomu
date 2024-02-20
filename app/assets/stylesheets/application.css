@@ -257,7 +257,7 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
 
 .footer-top {
   padding-bottom: 50px;
-  padding: 0px;
+  padding: 30px;
   background-color: #212529;
 }
 
@@ -444,7 +444,7 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(58, 58, 58, 0.791);
+  background-color: rgba(58, 58, 58, 0.156);
   z-index: -1;
 }
 
