@@ -47,7 +47,7 @@
 </div>
 
 <%= form_with url: games_path, local: true do |f| %>
-  <div class="row g-4 justify-content-center">
+  <div class="row g-4 justify-content-center mb-5">
     <!-- ゲームを始めるカード -->
     <div class="col-lg-4 col-md-6">
       <div class="service card-effect text-center card-custom">
@@ -59,7 +59,7 @@
 
     <!-- マスターに相談するカード -->
     <div class="col-lg-4 col-md-6">
-      <div class="service card-effect text-center card-custom">
+      <div class="service card-effect text-center card-custom mb-5">
         <h5 class="mt-4 mb-2">マスターに相談する</h5>
         <p>その日の気分でカクテルを選びたい方。</p>
         <%= link_to '選んでみる', consult_master_path, class: 'btn btn-light rounded-pill btn-custom-border' %>

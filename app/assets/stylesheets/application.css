@@ -13,6 +13,21 @@ body {
   font-family: Sora, "sans-serif";
   line-height: 1.7;
   color: var(--body);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* ビューポートの高さに合わせて、bodyの高さを設定 */
+  margin: 0; /* デフォルトのマージンをリセット */
+}
+
+.content {
+  flex-grow: 1; /* コンテンツがフッターを下に押し下げる */
+}
+
+.footer-top {
+  padding-bottom: 50px;
+  padding: 30px;
+  background-color: #212529;
+  margin-top: auto; /* 自動的に上の余白を調整して、フッターを最下部に配置 */
 }
 
 h1,
@@ -255,22 +270,12 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
   border-color: black !important; /* 枠線を黒色に設定 */
 }
 
-.footer-top {
-  padding-bottom: 50px;
-  padding: 30px;
-  background-color: #212529;
-}
-
 .footer-top a {
   color: var(--body);
 }
 
 .footer-top a:hover {
   color: #fff;
-}
-
-.custom-margin {
-  margin-top: 0rem; /* または希望する値に */
 }
 
 #google-login-btn {
