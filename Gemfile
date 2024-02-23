@@ -69,11 +69,12 @@ gem "bootsnap", require: false
 group :development, :test do # 開発環境とテスト環境でのみ必要なgemを指定します。
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  gem 'rspec-rails'
 end
 
 group :development do #開発環境でのみ必要なgemを指定します。
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem 'sqlite3', '~> 1.4'
 
   gem "web-console"
 
