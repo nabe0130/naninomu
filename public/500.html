@@ -1,66 +1,154 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
-
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
-</head>
-
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
-</body>
-</html>
+<body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>ページが表示できません (500) · Naninomu</title>
+  
+    <style>
+  
+      .top-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%; /* 画像の幅を画面の50%に設定 */
+        max-width: 600px; /* 最大幅を600pxに設定 */
+        height: auto; /* 高さを自動調整 */
+        margin-bottom: 70px; /* 下部に余白を設定 */
+      }
+  
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        clip-path: inset(50%);
+        border: 0;
+      }
+  
+      body {
+        text-align: center;
+        font-family: "Noto Sans JP", "Noto Sans CJK JP", "Helvetica Neue",
+          "Hiragino Kaku Gothic Pro", "Yu Gothic", sans-serif;
+        background-color: #FAEBD7;
+        color: #21252f;
+      }
+  
+      #container {
+        width: 90%;
+        max-width: 862px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+      }
+  
+      #container > header {
+        text-align: center;
+        padding-top: 36px;
+        padding-bottom: 36px;
+      }
+  
+      @media
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (min-resolution: 2dppx),
+        only screen and (min-resolution: 192dpi){
+  
+        }
+  
+      h1 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 28px;
+        line-height: 41px;
+  
+        margin: 0;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 18px;
+        line-height: 27px;
+      }
+      @media only screen and (max-width: 650px) {
+        h1 {
+          font-size: 16px;
+          line-height: 24px;
+        }
+        p {
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+  
+      #container > article {
+        background-color: #fff;
+  
+        padding-top: 60px;
+        padding-left: 85px;
+        padding-right: 85px;
+        padding-bottom: 20px;
+  
+        border-radius: 20px;
+        text-align: center;
+      }
+      @media only screen and (max-width: 900px) {
+        #container > article {
+          padding-top: 30px;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+      }
+  
+      article > nav {
+        text-align: center;
+        margin-top: 40px;
+      }
+      article > nav > a {
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+      article > nav > a, article > nav > a:visited {
+        font-size: 14px;
+        color: #757575;
+        text-decoration: underline;
+      }
+  
+      #container > footer {
+        margin-top: 120px;
+        margin-bottom: 100px;
+        text-align: center;
+      }
+      #container > footer nav a {
+        font-size: 14px;
+        line-height: 21px;
+        text-decoration: none;
+        margin-left: 15px;
+        margin-right: 15px;
+        color: #21252f;
+      }
+      #container > footer nav a:visited {
+        color: #21252f;
+      }
+    </style>
+  </head>
+  
+  </head>
+  <body>
+    <main id="container">
+      <header>
+        <div class="logo"></div>
+      </header>
+      <html id="container">
+      <img src="/assets/error.png" class="top-image">
+      <article>
+        <h1>ページが表示できません</h1>
+        <p>ご不便をおかけし申し訳ありません。</p>
+        <p>正常にご覧にいただけるよう、解決に取り組んでおります。</p>
+        <nav>
+          <p>しばらく時間をおてもご覧いただけない場合、お手数ですが<a href="/contact" class="btn btn-link">お問い合わせ</a>ください。</p>
+        </nav>
+      </article>
+    </main>
+  </body>
+  </html>
