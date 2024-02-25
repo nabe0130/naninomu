@@ -108,6 +108,13 @@ GEM
       dotenv (= 2.8.1)
       railties (>= 3.2)
     erubi (1.12.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faker (3.2.1)
+      i18n (>= 1.8.11, < 2)
     faraday (2.9.0)
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
@@ -259,6 +266,8 @@ GEM
     rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
+    rspec-queue (0.3.0)
+      rspec-core (>= 3.2)
     rspec-rails (5.0.1)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
@@ -274,6 +283,9 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
+    spring (4.1.1)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -340,6 +352,8 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  factory_bot_rails
+  faker
   importmap-rails
   jbuilder
   kaminari
@@ -349,8 +363,10 @@ DEPENDENCIES
   pg
   puma (~> 5.0)
   rails (~> 7.0.7, >= 7.0.7.2)
+  rspec-queue
   rspec-rails
   selenium-webdriver
+  spring-commands-rspec
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails

@@ -17,6 +17,6 @@ class User < ApplicationRecord
   end
 
   def bookmarked?(cocktail)
-    bookmarks.exists?(drink_id: cocktail_id)
+    bookmarks.exists?(drink_id: cocktail.id)
   end
 end

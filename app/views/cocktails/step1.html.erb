@@ -10,7 +10,7 @@
     </div>
   </fieldset>
   <input type="hidden" id="alcohol_to" name="alcohol_to" value="100">
-  <button type="submit" class="btn btn-outline-secondary rounded mt-2">次へ</button>
+  <button type="submit" class="btn btn-outline-secondary rounded mb-5 mt-3">次へ</button>
 <% end %>
 
 <script>
@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll('.hidden-radio').forEach(function(radio) {
     radio.addEventListener('change', function() {
       updateActiveStyles();
+      var selectedValue = this.value; // この行を追加
+      var alcoholToValue = determineAlcoholToValue(selectedValue); // この行を追加
+      document.getElementById('alcohol_to').value = alcoholToValue; // この行を追加
     });
   });
 });
@@ -48,7 +51,7 @@ form-group: Bootstrapのフォームグループクラスで、フォーム要�
 mb-3: マージンボトムを適用して、要素間の間隔を作ります。
 form-label: ラベルにスタイルを適用します。
 form-select: セレクトボックスにBootstrapスタイルを適用します。
-btn btn-primary: ボタンにプライマリスタイル（青色）を適用します。 
+btn btn-primary: ボタンにプライマリスタイル（青色）を適用します。
 各ラジオボタンを label タグで囲んでいます。これにより、ラベル全体が選択可能な領域となります。
 btn-group-vertical クラスを使用して、ボタンを垂直に並べます。
 btn と btn-outline-primary クラスを使用して、各ラベルにボタンのような外観を与えます。

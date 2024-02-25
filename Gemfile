@@ -71,6 +71,10 @@ group :development, :test do # 開発環境とテスト環境でのみ必要なg
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 
   gem 'rspec-rails'
+
+  gem 'factory_bot_rails'
+
+  gem "faker"
 end
 
 group :development do #開発環境でのみ必要なgemを指定します。
@@ -81,6 +85,10 @@ group :development do #開発環境でのみ必要なgemを指定します。
   gem 'better_errors', '>= 2.5.1'
 
   gem 'binding_of_caller', '>= 0.8.0'
+
+  gem 'spring-commands-rspec'
+
+  gem 'rspec-queue'
 
   #gem "mailcatcher"
 
