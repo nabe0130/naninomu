@@ -109,4 +109,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem 'webmock', require: false
+  gem 'rails-controller-testing'
+
 end
