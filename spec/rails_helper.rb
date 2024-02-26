@@ -7,9 +7,12 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'webmock/rspec'
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(allow_localhost: true, allow: ['storage.googleapis.com', 'github.com', 'googlechromelabs.github.io'])
 
 I18n.default_locale = :en
+
+require 'capybara/rspec'
+Capybara.javascript_driver = :selenium_chrome_headless
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -66,4 +69,5 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Rails::Controller::Testing::TemplateAssertions, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :system
 end
