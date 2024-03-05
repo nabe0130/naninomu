@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# StaticPagesControllerは、アプリケーション内の静的なページを扱うコントローラです。
+# 利用規約、プライバシーポリシー、お問い合わせフォームなど、動的なデータの読み込みを必要としないページの表示を担当します。
 class StaticPagesController < ApplicationController
   def contact
     @contact = Contact.new

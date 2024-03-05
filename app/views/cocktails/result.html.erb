@@ -1,48 +1,52 @@
 <h2>貴方におすすめのカクテル</h2>
-<p style="margin-bottom: 20px;">5件以上ある場合はランダムに5件表示されます。</p>
+<p style="margin-bottom: 20px;">6件以上ある場合はランダムに6件表示されます。</p>
 
 <% unless current_user %>
   <p><strong>カクテル結果をお気に入りに登録するには、<%= link_to 'ログイン', new_user_session_path %>してください。</strong></p>
 <% end %>
 
-<div class="cocktails-container">
-  <% if @detailed_cocktails.any? %>  <!-- @detailed_cocktailsにデータがあるかどうかをチェック -->
-    <% @detailed_cocktails.each do |cocktail| %>  <!-- @detailed_cocktailsの各要素に対して繰り返し処理を実行 -->
-      <div class="cocktail-card">
-        <div class="d-flex align-items-center justify-content-between">
-          <div>
-            <h3><%= cocktail["cocktail"]["cocktail_name"] %></h3>
-            <p><%= cocktail["cocktail"]["cocktail_desc"] %></p>  <!-- カクテルの説明文の表示 -->
-            <p class="alcohol-content">アルコール度数: <%= cocktail["cocktail"]["alcohol"] %>％</p>
-            <!-- Google画像検索へのリンクを追加 -->
-            <p>
-              <%= link_to "カクテルの画像検索", "https://www.google.com/search?tbm=isch&q=#{CGI.escape(cocktail["cocktail"]["cocktail_name"])}", target: "_blank", rel: "noopener" %>
-            </p>
-          </div>
-          <% if current_user %>
-            <!-- お気に入りボタンを追加 -->
-            <% cocktail_id = cocktail["cocktail"]["cocktail_id"] %>
-            <% bookmark = current_user.bookmarks.find_by(drink_id: cocktail_id) %>
-            <div id="bookmark_<%= cocktail_id %>">
-              <% if bookmark.present? %>
-                <%= link_to drink_bookmarks_path(cocktail_id), method: :delete, remote: true, class: 'favorite-icon-link' do %>
-                  <i class="bi bi-heart-fill" id="favorite-icon-<%= cocktail_id %>"></i> <!-- 既にブックマークされている場合のハートアイコン -->
+<div class="cocktails-container mb-5">
+  <% if @detailed_cocktails.any? %>
+    <div class="row">
+      <% @detailed_cocktails.each do |cocktail| %>
+        <div class="col-md-6 d-flex">
+          <div class="cocktail-card mb-4 flex-fill">
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <h5><%= cocktail["cocktail"]["cocktail_name"] %></h5>
+                <% if current_user %>
+                  <!-- お気に入りボタンを追加 -->
+                  <% cocktail_id = cocktail["cocktail"]["cocktail_id"] %>
+                  <% bookmark = current_user.bookmarks.find_by(drink_id: cocktail_id) %>
+                  <div id="bookmark_<%= cocktail_id %>">
+                    <% if bookmark.present? %>
+                      <%= link_to drink_bookmarks_path(cocktail_id), method: :delete, remote: true, class: 'favorite-icon-link' do %>
+                        <i class="bi bi-heart-fill" id="favorite-icon-<%= cocktail_id %>"></i> <!-- 既にブックマークされている場合のハートアイコン -->
+                      <% end %>
+                    <% else %>
+                      <%= link_to drink_bookmarks_path(cocktail_id), method: :post, remote: true, class: 'favorite-icon-link' do %>
+                        <i class="bi bi-heart" id="favorite-icon-<%= cocktail_id %>"></i> <!-- ブックマークされていない場合のハートアイコン -->
+                      <% end %>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <!-- ログインしていない場合、お気に入りボタンを表示しないか、またはログインを促すメッセージを表示 -->
+                  <!-- ここにメッセージを表示するコードは不要です -->
                 <% end %>
-              <% else %>
-                <%= link_to drink_bookmarks_path(cocktail_id), method: :post, remote: true, class: 'favorite-icon-link' do %>
-                  <i class="bi bi-heart" id="favorite-icon-<%= cocktail_id %>"></i> <!-- ブックマークされていない場合のハートアイコン -->
-                <% end %>
-              <% end %>
+                <p><%= cocktail["cocktail"]["cocktail_desc"] %></p>
+                <p class="alcohol-content">アルコール度数: <%= cocktail["cocktail"]["alcohol"] %>％</p>
+                <!-- Google画像検索へのリンクを追加 -->
+                <p>
+                  <%= link_to "カクテルの画像検索", "https://www.google.com/search?tbm=isch&q=#{CGI.escape(cocktail["cocktail"]["cocktail_name"])}", target: "_blank", rel: "noopener" %>
+                </p>
+              </div>
             </div>
-          <% else %>
-            <!-- ログインしていない場合、お気に入りボタンを表示しないか、またはログインを促すメッセージを表示 -->
-            <!-- ここにメッセージを表示するコードは不要です -->
-          <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
-  <% else %>  <!-- @detailed_cocktailsにデータがない場合のメッセージ -->
+      <% end %>
+    </div>
+  <% else %>
     <p>その条件に当てはまるカクテルがありませんでした。</p>
-    他の条件で再度検索してみて下さい！
+    他の条件で再度検索してみてください！
   <% end %>
 </div>

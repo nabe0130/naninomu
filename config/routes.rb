@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'static_pages/contact'
   get 'static_pages/terms'
@@ -5,7 +7,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
 
-    omniauth_callbacks: "users/omniauth_callbacks"
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
   # GamesControllerのnewアクションをアプリケーションのメインページに設定
   root 'games#new'
@@ -36,12 +38,12 @@ Rails.application.routes.draw do
   end
 
   resources :drinks do
-    resource :bookmarks, only: [:create, :destroy]
+    resource :bookmarks, only: %i[create destroy]
   end
   resources :users, only: [:show]
   # GamesControllerのルーティング
-  resources :games, only: [:new, :create] do
-    resources :progresses, only: [:new, :create]
+  resources :games, only: %i[new create] do
+    resources :progresses, only: %i[new create]
   end
   # 他のコントローラーのルーティングがあればここに追加
   # 例: get 'cocktails/index'

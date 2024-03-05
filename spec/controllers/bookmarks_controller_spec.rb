@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe BookmarksController, type: :controller do
@@ -10,22 +12,22 @@ RSpec.describe BookmarksController, type: :controller do
 
   context '存在するドリンクIDが指定された場合' do
     it 'ブックマークが作成されること' do
-      expect {
+      expect do
         post :create, params: { drink_id: drink.id }
-      }.to change(Bookmark, :count).by(1)
+      end.to change(Bookmark, :count).by(1)
       expect(response).to redirect_to(root_path)
       expect(flash[:notice]).to eq 'お気に入りに登録しました。'
     end
 
     context '既にブックマークされている場合' do
       before do
-        FactoryBot.create(:bookmark, user: user, drink: drink)
+        FactoryBot.create(:bookmark, user:, drink:)
       end
 
       it 'ブックマークが削除されること' do
-        expect {
+        expect do
           post :create, params: { drink_id: drink.id }
-        }.to change(Bookmark, :count).by(-1)
+        end.to change(Bookmark, :count).by(-1)
         expect(response).to redirect_to(root_path)
         expect(flash[:notice]).to eq 'お気に入りを解除しました。'
       end
@@ -42,12 +44,12 @@ RSpec.describe BookmarksController, type: :controller do
   describe 'DELETE #destroy' do
     context 'ログインしているユーザーの場合' do
       context '存在するブックマークが指定された場合' do
-        let!(:bookmark) { FactoryBot.create(:bookmark, user: user, drink: drink) }
+        let!(:bookmark) { FactoryBot.create(:bookmark, user:, drink:) }
 
         it 'ブックマークが削除されること' do
-          expect {
+          expect do
             delete :destroy, params: { drink_id: drink.id }
-          }.to change(Bookmark, :count).by(-1)
+          end.to change(Bookmark, :count).by(-1)
           expect(response).to redirect_to(root_path)
           expect(flash[:notice]).to eq 'お気に入りを解除しました。'
         end

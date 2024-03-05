@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   describe 'GET #show' do
     let(:user) { FactoryBot.create(:user) }
-    
+
     context 'ユーザーが存在する場合' do
-      let!(:bookmarks) { FactoryBot.create_list(:bookmark, 10, user: user) }
+      let!(:bookmarks) { FactoryBot.create_list(:bookmark, 10, user:) }
 
       it '正常にレスポンスを返すこと' do
         get :show, params: { id: user.id }
@@ -25,9 +27,9 @@ RSpec.describe UsersController, type: :controller do
 
     context 'ユーザーが存在しない場合' do
       it '404エラーが返されること' do
-        expect {
+        expect do
           get :show, params: { id: 0 }
-        }.to raise_error(ActiveRecord::RecordNotFound)
+        end.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end

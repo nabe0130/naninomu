@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 # BookmarksControllerはApplicationControllerを継承しており、
 # アプリケーションのコントローラーが共通で持つべき機能を利用できます。
 class BookmarksController < ApplicationController
-
   # createアクションは、新しいブックマークを作成するためのものです。
   def create
     @drink = Drink.find_by(id: params[:drink_id])
     if @drink
       # 既存のブックマークを検索します。
       existing_bookmark = current_user.bookmarks.find_by(drink: @drink)
-  
+
       respond_to do |format|
         if existing_bookmark
           # 既に存在する場合は、そのブックマークを削除します。
@@ -32,12 +33,12 @@ class BookmarksController < ApplicationController
       render json: { error: 'カクテルが見つかりませんでした。' }, status: :not_found
     end
   end
-  
+
   # destroyアクションは、ブックマークを削除するためのものです。
   def destroy
     # 現在ログインしているユーザーのブックマークから、指定されたdrink_idに該当するものを検索します。
     @bookmark = current_user.bookmarks.find_by(drink_id: params[:drink_id])
-    
+
     # @bookmarkが存在し、かつ削除が成功した場合、以下のブロックが実行されます。
     if @bookmark&.destroy
       # レスポンスのフォーマットをクライアントの要求に応じて変更します。

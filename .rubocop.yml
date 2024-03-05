@@ -1,0 +1,61 @@
+# 要求されるRubyのバージョン
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+  # 拡張機能の読み込み
+  require:
+    - rubocop-rails
+    - rubocop-rspec
+    - rubocop-factory_bot
+    - rubocop-capybara
+  SuggestExtensions: false
+
+# 一行あたりの最大文字数を200文字に設定
+Layout/LineLength:
+  Max: 200
+
+# Cyclomatic Complexityの最大許容値を10に設定
+Metrics/CyclomaticComplexity:
+  Max: 20
+# メソッドの最大行数を20行に設定
+Metrics/MethodLength:
+  Max: 45
+# Perceived Complexityの最大許容値を10に設定
+Metrics/PerceivedComplexity:
+  Max: 20
+
+# 特定のファイルからドキュメントコメントの必要性を除外
+Style/Documentation:
+  Exclude:
+    - "app/models/application_record.rb"
+    - "app/models/bookmark.rb"
+    - "app/models/contact.rb"
+    - "app/models/drink.rb"
+    - "app/models/game.rb"
+    - "app/models/progress.rb"
+    - "app/models/question.rb"
+    - "app/models/user.rb"
+    - "app/controllers/*.rb"
+    - "test/**/*"
+    - "app/helpers/*"
+
+# ABCサイズのチェックを除外
+Metrics/AbcSize:
+  Exclude:
+    - "app/models/drink.rb"
+    - "app/controllers/*.rb"
+
+Style/IfUnlessModifier:
+  Exclude:
+    - 'bin/bundle'
+
+# 特定のディレクトリやファイルにおけるブロックの長さに関する制限を除外
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "db/schema.rb"
+    - "db/migrate/**/*"
+    - "config/routes.rb"
+    - "config/environments/*.rb"
+    - "app/models/*.rb"
+    - "bin/**/*"

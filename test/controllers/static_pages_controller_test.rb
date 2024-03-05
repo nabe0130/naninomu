@@ -1,17 +1,19 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get contact" do
+  test 'should get contact' do
     get static_pages_contact_url
     assert_response :success
   end
 
-  test "should get terms" do
+  test 'should get terms' do
     get static_pages_terms_url
     assert_response :success
   end
 
-  test "should get privacy" do
+  test 'should get privacy' do
     get static_pages_privacy_url
     assert_response :success
   end

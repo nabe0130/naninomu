@@ -37,10 +37,10 @@
               <p class="card-text">Base.<%= cocktail["base_name"] %></p>
               <p class="card-text">アルコール度数: <%= cocktail["alcohol"] %>%</p>
             </div>
-            <p class="card-text"><%= cocktail["cocktail_desc"] %></p>
+            <p class="card-text"><%= cocktail["cocktail_digest"] %></p>
             <% if cocktail["recipes"].present? %>
-              <h6>Recipe</h6>
-              <ul>
+              <ul class="align-left">
+                <p>Recipe</p>
                 <% cocktail["recipes"].each do |recipe| %>
                   <li>
                     <%= recipe["ingredient_name"] %>:
@@ -54,4 +54,5 @@
       </div>
     <% end %>
   </div>
+  <%= paginate @cocktails %>
 <% end %>

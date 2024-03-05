@@ -1,12 +1,18 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# アプリケーション全体の設定とカスタマイズを行うモジュールです。
+# ここでの設定は全ての環境に適用され、環境ごとの設定ファイルで上書きすることができます。
 module Naninomu
+  # アプリケーションの基本設定を行うクラスです。
+  # Railsアプリケーションの初期化プロセスや設定のデフォルト値を定義しています。
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0

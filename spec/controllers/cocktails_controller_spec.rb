@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe CocktailsController, type: :controller do
@@ -22,14 +24,14 @@ RSpec.describe CocktailsController, type: :controller do
 
   describe 'GET #search' do
     before do
-      stub_request(:get, "https://cocktail-f.com/api/v1/cocktails").
-        with(query: hash_including({
-          "alcohol_from" => '',
-          "alcohol_to" => '',
-          "base" => '',
-          "word" => 'テキーラ'
-        })).
-        to_return(status: 200, body: { "cocktails": [] }.to_json, headers: {})
+      stub_request(:get, 'https://cocktail-f.com/api/v1/cocktails')
+        .with(query: hash_including({
+                                      'alcohol_from' => '',
+                                      'alcohol_to' => '',
+                                      'base' => '',
+                                      'word' => 'テキーラ'
+                                    }))
+        .to_return(status: 200, body: { cocktails: [] }.to_json, headers: {})
     end
 
     it '正常にレスポンスを返すこと' do

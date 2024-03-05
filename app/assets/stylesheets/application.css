@@ -42,8 +42,8 @@ h6,
 }
 
 a {
-  color: var(--dark);
-  text-decoration: none;
+  color: #357ae8;
+  text-decoration: underline;
 }
 
 .btn {
@@ -109,7 +109,7 @@ nav.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
   list-style: none;
 }
 
@@ -120,9 +120,8 @@ nav.pagination span {
 
 /* リンクが含まれるspan要素のスタイル */
 nav.pagination span a {
-  padding: 5px 10px;
+  padding: 5px 3px;
   text-decoration: none;
-  color: #337ab7; /* リンクの色 */
   background-color: #f5f5f5; /* 背景色 */
   border: 1px solid #ddd; /* 境界線 */
   border-radius: 5px; /* 角の丸み */
@@ -454,6 +453,12 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
   z-index: -1;
 }
 
+.align-left {
+  text-align: left; /* テキストを左揃えにする */
+  list-style-position: inside; /* リストマーカーを内側に配置して、テキストと揃える */
+  font-size: 0.7rem;
+}
+
 /* スマホ用のスタイル */
 @media (max-width: 768px) {
   .container {
@@ -461,25 +466,45 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
     padding: 0 15px; /* 必要に応じてパディングを調整 */
   }
 
-  .text-container p, .text-container h4, .text-container h5,
-  .container p, .container h1, .container h2 {
-    font-size: smaller; /* フォントサイズを小さくする */
-    line-height: 1.5; /* 行間を適切に設定 */
-    padding: 5px; /* パディングを小さく設定 */
-    margin: 10px 0; /* マージンを適切に設定 */
+  .hero {
+    background-position: left center; /* モバイルでは画像の上部を中心に表示 */
+    background-size: cover; /* 画像をカバーとして保持 */
+  }
+
+  .text-container p, .text-container h4, .text-container h5 {
+    font-size: 14px; /* フォントサイズを小さくする */
   }
 
   .sidebar {
     display: none;
   }
 
-  .main-content {
-    width: auto;
-    margin: 0 10px;
-  }
+  @media (max-width: 768px) {
+    .card {
+        /* カードのレイアウトを縦方向に最適化 */
+        flex-direction: column;
+    }
 
-  .navbar-brand {
-    margin-bottom: 0.5rem; /* Bootstrapのmb-3と同じマージンを適用 */
-  }
+    .card-body {
+        /* カード内の余白を調整 */
+        padding: 10px;
+    }
+
+    .card-title {
+        /* テキストのサイズを小さくする */
+        font-size: 16px;
+    }
+
+    ul.align-left {
+        /* レシピリストのスタイルを調整 */
+        padding-left: 20px;
+    }
+
+    ul.align-left li {
+        /* リストアイテムのフォントサイズを調整 */
+        font-size: 12px;
+    }
+}
+
   /* 他にもスマホサイズに適応するスタイルをここに追加 */
 }
