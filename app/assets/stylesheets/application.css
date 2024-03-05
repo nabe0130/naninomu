@@ -459,6 +459,38 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
   font-size: 0.7rem;
 }
 
+/* アイテムの装飾 */
+.list-group-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease-in-out;
+}
+
+.list-group-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* ランキングの数字のスタイル */
+.font-weight-bold {
+  color: #777;
+  font-size: 1.2em;
+}
+
+/* バッジのスタイル */
+.badge {
+  background-color : #f4b700c2 !important;
+  font-size: 1em;
+}
+
+/* アイコン（例：カクテルグラス）を表示 */
+.cocktail-icon {
+  margin-right: 20px;
+  display: inline-block;
+  background: url('cocktail_icon.png') no-repeat center center;
+  width: 30px; /* アイコンのサイズに合わせて調整 */
+  height: 30px; /* アイコンのサイズに合わせて調整 */
+}
+
 /* スマホ用のスタイル */
 @media (max-width: 768px) {
   .container {

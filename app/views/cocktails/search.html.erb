@@ -1,5 +1,9 @@
 <h1>検索結果</h1>
 
+<% unless current_user %>
+  <p><strong>検索結果をお気に入りに登録するには、<%= link_to 'ログイン', new_user_session_path %>してください。</strong></p>
+<% end %>
+
 <% if @error_message %>
   <p><%= @error_message %></p>
 <% elsif @cocktails.present? %>
