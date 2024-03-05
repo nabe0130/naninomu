@@ -3,12 +3,12 @@
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="field mb-2">
     <%= f.label :email, "メールアドレス送信" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="actions">
+  <div class="actions mb-2">
     <%= f.submit "送信" %>
   </div>
 <% end %>
