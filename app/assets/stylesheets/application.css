@@ -468,7 +468,6 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
 
   .hero {
     background-position: left center; /* モバイルでは画像の上部を中心に表示 */
-    background-size: cover; /* 画像をカバーとして保持 */
   }
 
   .text-container p, .text-container h4, .text-container h5 {
