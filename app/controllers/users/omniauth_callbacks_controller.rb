@@ -6,16 +6,32 @@ module Users
   # このクラスでは、各サービスごとの認証コールバックを処理するためのアクションを定義します。
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # callback for google
-    def google_oauth2
-      callback_for(:google)
+    def line
+      basic_action(:line)
     end
 
-    def callback_for(provider)
-      # 先ほどuser.rbで記述したメソッド(from_omniauth)をここで使っています
-      # 'request.env["omniauth.auth"]'この中にgoogoleアカウントから取得したメールアドレスや、名前と言ったデータが含まれています
-      @user = User.from_omniauth(request.env['omniauth.auth'])
-      sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: provider.to_s.capitalize) if is_navigational_format?
+    # Google認証のコールバックを処理
+    def google_oauth2
+      basic_action(:google)
+    end
+
+    private
+
+    def basic_action(provider)
+      @omniauth = request.env['omniauth.auth']
+      if @omniauth.present?
+        @user = User.from_omniauth(@omniauth)
+
+        if @user.persisted?
+          sign_in_and_redirect @user, event: :authentication
+          set_flash_message(:notice, :success, kind: provider.to_s.capitalize) if is_navigational_format?
+        else
+          session['devise.omniauth_data'] = @omniauth.except(:extra) # Removing extra as it can overflow some session stores
+          redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
+        end
+      else
+        redirect_to root_path, alert: '認証情報を取得できませんでした。'
+      end
     end
 
     def failure
