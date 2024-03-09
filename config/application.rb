@@ -19,6 +19,8 @@ module Naninomu
 
     config.i18n.default_locale = :ja
 
+    config.time_zone = ENV['TZ'] || 'UTC'
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
