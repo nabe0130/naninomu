@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get 'static_pages/privacy'
 
   devise_for :users, controllers: {
-
-    omniauth_callbacks: 'users/omniauth_callbacks'
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    sessions: 'users/sessions'
   }
   # GamesControllerのnewアクションをアプリケーションのメインページに設定
   root 'games#new'
@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   get 'masters/result', to: 'masters#result', as: 'masters_result'
   get 'rankings', to: 'cocktails#rankings', as: 'rankings'
   get 'cocktails/autocomplete', to: 'cocktails#autocomplete'
-  post 'chat/input', to: 'chat#process_input'
 
   # GamesControllerのnewアクションに対するルーティング
   get '/games', to: 'games#new'

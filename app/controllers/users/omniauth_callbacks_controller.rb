@@ -7,18 +7,30 @@ module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # callback for google
     def line
-      # stateパラメータの検証
+      # stateパラメータの検証前にログを出力
+      Rails.logger.info "Omniauth Callback (LINE): Starting state validation."
+
       if session.delete(:omniauth_state) != request.env['omniauth.params']['state']
+        Rails.logger.warn "Omniauth Callback (LINE): CSRF detection. State parameter mismatch."
         redirect_to new_user_session_path, alert: 'CSRF検出されました。'
         return
       end
 
-      # stateが一致した場合の処理を続ける
+      Rails.logger.info "Omniauth Callback (LINE): State validated successfully."
+
+      # ユーザー検索または作成前にログを出力
+      Rails.logger.info "Omniauth Callback (LINE): Finding or creating user from Omniauth data."
+
       @user = User.from_omniauth(request.env['omniauth.auth'])
+
       if @user.persisted?
+        Rails.logger.info "Omniauth Callback (LINE): User persisted. Signing in user: #{@user.email}"
         sign_in_and_redirect @user, event: :authentication
         set_flash_message(:notice, :success, kind: 'LINE') if is_navigational_format?
       else
+        # ユーザー作成に失敗した場合のログ
+        Rails.logger.warn "Omniauth Callback (LINE): User creation failed. Redirecting to sign up."
+        Rails.logger.warn "Omniauth Callback (LINE): Errors: #{@user.errors.full_messages.join(", ")}"
         session['devise.omniauth_data'] = request.env['omniauth.auth'].except('extra')
         redirect_to new_user_registration_url
       end
