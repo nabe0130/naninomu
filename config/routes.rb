@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'static_pages/privacy'
 
   devise_for :users, controllers: {
-
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   # GamesControllerのnewアクションをアプリケーションのメインページに設定
