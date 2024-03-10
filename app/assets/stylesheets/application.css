@@ -395,7 +395,7 @@ nav.pagination .disabled a, nav.pagination .disabled a:hover {
 }
 
 .text-container h5 {
-  color: #00c8ff; /* 文字色 */
+  color: #4c4c4c; /* 文字色 */
   margin-top: 20px; /* 上の余白 */
   font-size: 16px; /* 見出しのフォントサイズを調整 */
   line-height: 1.4;
